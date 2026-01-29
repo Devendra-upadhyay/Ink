@@ -1,0 +1,46 @@
+body {
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  padding: 20px 40px;
+}
+
+.back {
+  color: #c9a24d;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.poem-full {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.poem-full h1 {
+  font-family: 'Playfair Display', serif;
+  color: #c9a24d;
+  font-size: 38px;
+}
+
+.date {
+  display: block;
+  margin: 10px 0 30px;
+  color: #aaa;
+}
+
+.content p {
+  line-height: 2;
+  font-size: 16px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #a8904d;
+}

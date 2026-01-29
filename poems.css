@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+ 
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.85);
+  border-bottom: 1px solid rgba(201,162,77,0.3);
+  z-index: 100;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #c9a24d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9a24d;
+  font-family: 'Playfair Display', serif;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #c9a24d;
+}
+
+.nav-right a {
+  margin-left: 24px;
+  color: #c9a24d;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.nav-right a:hover,
+.nav-right .active {
+  text-shadow: 0 0 8px rgba(201,162,77,0.6);
+}
+
+/* TITLE */
+.page-title {
+  text-align: center;
+  margin-top: 140px;
+}
+
+.page-title h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  color: #c9a24d;
+}
+
+.page-title p {
+  margin-top: 10px;
+  color: #d4d4d4;
+}
+
+.divider {
+  width: 120px;
+  height: 2px;
+  background: #c9a24d;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(201,162,77,0.6);
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 40px 0;
+}
+
+.filters button {
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid #c9a24d;
+  color: #c9a24d;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button.active,
+.filters button:hover {
+  background: #c9a24d;
+  color: #000;
+  box-shadow: 0 0 12px rgba(201,162,77,0.6);
+}
+
+/* POEMS */
+.poem-list {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 20px 80px;
+}
+
+.poem-card {
+  background: rgba(15,15,15,0.9);
+  border: 1px solid rgba(201,162,77,0.5);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 18px rgba(201,162,77,0.15);
+  
+}
+
+.poem-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.poem-no {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #c9a24d;
+}
+
+.poem-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+}
+
+.date {
+  font-size: 13px;
+  color: #aaa;
+  display: block;
+  margin: 8px 0 14px;
+}
+
+.poem-card p {
+  line-height: 1.7;
+  color: #ddd;
+}
+
+.read-btn {
+  text-align: right;
+  margin-top: 16px;
+}
+
+.read-btn a {
+  color: #c9a24d;
+  text-decoration: none;
+  border: 1px solid #c9a24d;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.read-btn a:hover {
+  background: #c9a24d;
+  color: #000;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #a8904d;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page-title h1 {
+    font-size: 42px;
+  }
+  .nav-right {
+    display: none;
+  }
+}
