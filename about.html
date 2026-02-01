@@ -8,105 +8,94 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Global Styles -->
   <link rel="stylesheet" href="style.css">
+  <!-- About Page Styles -->
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-   <header class="navbar">
+<!-- NAVBAR -->
+<header class="navbar">
   <div class="nav-left">
     <div class="logo-circle">I</div>
     <a href="index.html"><span class="logo-text">Ink</span></a>
   </div>
-  <nav class="nav-right">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="poem.html">Poems</a>
-        <a href="featured-poems.html">Featured</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="page-title">
-    <h1>About Me</h1>
-    <p>The voice behind the words</p>
-    <div class="divider"></div>
-  </section>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-  <!-- PROFILE -->
-  <section class="profile">
-    <div class="profile-img">
-      <img src="Image/Writer2.png" alt="Author Image">
+  <nav class="nav-right" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="poem.html">Poems</a>
+    <a href="featured-poems.html">Featured</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- PAGE TITLE -->
+<section class="page-title">
+  <h1>About Me</h1>
+  <p>The voice behind the words</p>
+  <div class="divider"></div>
+</section>
+
+<!-- BRIEFING BOX -->
+<section class="about">
+  <div class="briefing-box">
+
+    <!-- IMAGE ON TOP -->
+    <div class="about-image">
+      <img src="Image/Writer2.png" alt="Author Image" class="author-image">
     </div>
-    <div class="profile-text">
-      <h2>Devendra Upadhyaya</h2>
-      <div class="role">Hindi Poet · Writer · Observer</div>
+
+    <!-- NAME & ROLE -->
+    <h2>Devendra Upadhyay</h2>
+    <span class="role">Hindi Poet · Writer · Observer</span>
+
+    <!-- INTRO + JOURNEY + EMPHASIS -->
+    <div class="about-text">
       <p>
-      My name is Devendra Upadhyay.  
-      I am a Hindi poet and writer who believes that words are not always meant
-      to speak loudly — some exist to sit quietly with the reader.
-    </p>
+        My name is Devendra Upadhyay. I am a Hindi poet and writer who believes that words are not always meant to speak loudly — some exist to sit quietly with the reader.
+      </p>
 
-    <p>
-      I began writing as a way to give direction to sleepless thoughts and
-      unspoken emotions. Over time, writing became not just an expression,
-      but a process of understanding myself and the world around me.
-    </p>
+      <p>
+        I began writing as a way to give direction to sleepless thoughts and unspoken emotions. Over time, writing became not just an expression, but a process of understanding myself and the world around me.
+      </p>
 
-    <p>
-      My work is rooted in Hindi literature and shaped by introspection,
-      everyday emotions, social observations, and the subtle struggles of life.
-      I write about distance, longing, time, memories, family, and silence.
-    </p>
+      <p>
+        My work is rooted in Hindi literature and shaped by introspection, everyday emotions, social observations, and the subtle struggles of life. I write about distance, longing, time, memories, family, and silence.
+      </p>
 
-    <p>
-      Though academically trained in Computer Science and Engineering,
-      my creative identity has always leaned toward words.
-      Writing helped me transform restless nights into reflection
-      and confusion into clarity.
-    </p>
+      <p>
+        Though academically trained in Computer Science and Engineering, my creative identity has always leaned toward words. Writing helped me transform restless nights into reflection and confusion into clarity.
+      </p>
 
-    <p>
-      For me, poetry is not decoration.
-      It is reflection.
-      It is honesty.
-      It is silence, given a voice.
-    </p>
+      <p class="emphasis">
+        Poetry is not decoration. <br>
+        It is reflection. <br>
+        It is honesty. <br>
+        It is silence, given a voice.
+      </p>
     </div>
-  </section>
 
-  <!-- WHY I WRITE -->
-  <section class="why">
-    <h2>Why I Write</h2>
-    <div class="quote-box">
-      <div class="quote-divider">• • •</div>
-      I write because some emotions refuse to stay quiet.
-    Because silence often carries more truth than noise.
-    Because words allow me to pause, observe, and understand.
+  </div>
+</section>
 
-    <br><br>
+<!-- CLOSING HINDI LINE -->
+<section class="closing">
+  “खामोशी की गहराइयों पर कुछ बातें रख दी हैं …”
+</section>
 
-    Every poem is an attempt to listen —
-    to myself, and to the world around me.
-      <div class="quote-divider">• • •</div>
-    </div>
-  </section>
+<!-- FOOTER -->
+<footer class="footer">
+  Devendra Upadhyay | © 2026 Ink | All Rights Reserved
+</footer>
 
-  <!-- CLOSING QUOTE -->
-  <section class="closing">
-    “खामोशी की गहराइयों पर कुछ बातें रख दी हैं …”
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    Devendra Upadhyay|© 2026 Ink | All Rights Reserved
-  </footer>
-
-</body>
 <script src="main.js"></script>
+</body>
 </html>
