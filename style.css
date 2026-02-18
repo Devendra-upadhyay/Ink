@@ -69,6 +69,12 @@ body::before {
   gap: 12px;
   text-decoration: none;
 }
+.nav-left a,
+.nav-left a:visited,
+.nav-left a:hover {
+  text-decoration: none;
+}
+
 
 .logo-circle {
   width: 38px;
