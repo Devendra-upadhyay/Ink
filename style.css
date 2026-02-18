@@ -746,6 +746,25 @@ body {
     .contact-item .icon:hover {
       text-shadow: 0 0 8px var(--gold);
     }
+    /* ===== FIX CONTACT LINK COLORS ===== */
+
+.contact-text a {
+  color: #c9a24d;        /* Same gold theme color */
+  text-decoration: none; /* Remove underline */
+  font-family: 'Merriweather', serif;
+  transition: 0.3s ease;
+}
+
+.contact-text a:hover {
+  color: #ffffff;        /* White on hover */
+  text-decoration: underline;
+}
+
+/* Prevent visited links turning purple */
+.contact-text a:visited {
+  color: #c9a24d;
+}
+
     /*================================================================*/
     /* =====================Contact Form============================= */
     /*================================================================*/

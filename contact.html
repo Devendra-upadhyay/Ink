@@ -20,14 +20,12 @@
     <a href="index.html"><span class="logo-text">Ink</span></a>
   </div>
 
-  <!-- HAMBURGER -->
   <div class="hamburger" id="hamburger">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- NAV LINKS -->
   <nav class="nav-right" id="navMenu">
     <a href="index.html" class="active">Home</a>
     <a href="poem.html">Poems</a>
@@ -44,51 +42,77 @@
     <div class="divider"></div>
   </section>
 
-  <!-- Intro Text -->
- <!-- <section class="intro-text">
-    <p>
-      Feel free to reach out for collaborations, inquiries, or even just to share a thought.
-      I would love to hear from you.
-    </p>
-  </section>-->
-
   <!-- Main Contact Section -->
   <section class="contact-section">
     <div class="contact-left">
       <h2>Find Me Here</h2>
 
+      <!-- ===== UPDATED: Clickable Email ===== -->
       <div class="contact-item">
         <span class="icon">✉️</span>
-        <span class="contact-text"><a>devendraupadhyay8989@gmail.com</a></span>
-        
-      </div>
-      <div class="contact-item">
-        <span class="icon">✉️</span>
-        <span class="contact-text"><a>ddevendraupadhyay9@gmail.com</a></span>
-        
+        <span class="contact-text">
+          <a href="mailto:devendraupadhyay8989@gmail.com">
+            devendraupadhyay8989@gmail.com
+          </a>
+        </span>
       </div>
 
+      <!-- ===== ADDED: Second Email Clickable ===== -->
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <span class="contact-text">
+          <a href="mailto:ddevendraupadhyay9@gmail.com">
+            ddevendraupadhyay9@gmail.com
+          </a>
+        </span>
+      </div>
+
+      <!-- ===== ADDED: WhatsApp Direct Chat ===== -->
+      <!-- Replace 919876543210 with your real number -->
+      <div class="contact-item">
+        <span class="icon">📱</span>
+        <span class="contact-text">
+          <a href="https://wa.me/916266021016" target="_blank">
+            Chat on WhatsApp
+          </a>
+        </span>
+      </div>
+
+      <!-- ===== UPDATED: Instagram Direct Link ===== -->
       <div class="contact-item">
         <span class="icon">📷</span>
-        <span class="contact-text">@its_dev_209</span>
+        <span class="contact-text">
+          <a href="https://instagram.com/its_dev_209" target="_blank">
+            Message on Instagram
+          </a>
+        </span>
       </div>
     </div>
 
     <div class="contact-right">
       <h2>Send Me a Message</h2>
-      <form action="#" method="POST" class="contact-form">
+
+      <!-- ===== UPDATED: Connected to Formspree ===== -->
+      <!-- Step 1: Go to https://formspree.io -->
+      <!-- Step 2: Create free form -->
+      <!-- Step 3: Replace YOUR_FORM_ID below -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+        
         <input type="text" name="name" placeholder="Your Name" required>
+        
         <input type="email" name="email" placeholder="Your Email" required>
+        
         <textarea name="message" placeholder="Write your message..." rows="6" required></textarea>
+        
         <button type="submit">Send Message</button>
       </form>
+
     </div>
   </section>
 
   <!-- Footer -->
-  <!-- FOOTER -->
   <footer class="footer">
-    Devendra Upadhyay|© 2026 Ink | All Rights Reserved
+    Devendra Upadhyay | © 2026 Ink | All Rights Reserved
   </footer>
 
 </body>
