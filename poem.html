@@ -119,35 +119,47 @@
 <div id="poems-container"></div>
 
 <script>
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR45SZTKrucg4zsoYELfEqNk0LNdjXzOUheCxpvioUOB0nUYITgqrEPoxwEi7Ucql16n_G1SrtSelfx/pub?output=csv")
+
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR1Bl9rsVeGR1xZ3rGv4WjB15Zyrty9GsrFo7aRsR26XAbKQz9eBawTE4njoYzWXtRpgdiIwo_WmA3u/pub?output=csv")
 .then(response => response.text())
 .then(data => {
+
   const rows = data.split("\n").slice(1);
   let output = "";
-  let count = 3; // you already have 3 poems
+  let count = 3; // because 3 manual poems already exist
 
-  rows.reverse().forEach(row => {
+  rows.reverse().forEach((row, index) => {
+
     const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
+    const id = index + 1; // unique id
     const title = columns[1];
     const content = columns[2];
+    const date = columns[0];
+
 
     if(title && content){
+
       count++;
 
       output += `
         <article class="poem-card poem" data-title="${title}">
+          
           <div class="poem-header">
-            <span class="poem-no">${String(count).padStart(2, '0')}</span>
+            <span class="poem-no">${count.toString().padStart(2,'0')}</span>
             <h2>${title}</h2>
           </div>
-          <span class="date">प्रकाशित : Auto</span>
+
+          <span class="date">प्रकाशित : ${date}</span>
+
           <p>
-            ${content.replace(/\\n/g, "<br>")}
+            ${content.substring(0,120).replace(/\n/g,"<br>")}...
           </p>
+
           <div class="read-btn">
-            <a href="#">Read Full Poem →</a>
+            <a href="single-poem.html?id=${id}">Read Full Poem →</a>
           </div>
+
         </article>
       `;
     }
@@ -155,7 +167,9 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR45SZTKrucg4zsoYELfEqNk0
 
   document.getElementById("poems-container").innerHTML = output;
 });
+
 </script>
+
 
 
 </main>

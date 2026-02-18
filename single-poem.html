@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Poem</title>
+
+<link rel="stylesheet" href="poem.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="logo-circle">Y</div>
+    <div class="logo-text">Your Name</div>
+  </div>
+</nav>
+
+<section class="poem-list" style="margin-top:140px;">
+  <div id="fullPoem"></div>
+</section>
+
+<script>
+
+const urlParams = new URLSearchParams(window.location.search);
+const poemId = urlParams.get("id");
+
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR1Bl9rsVeGR1xZ3rGv4WjB15Zyrty9GsrFo7aRsR26XAbKQz9eBawTE4njoYzWXtRpgdiIwo_WmA3u/pub?output=csv")
+.then(res => res.text())
+.then(data => {
+
+  const rows = data.split("\n").slice(1).reverse();
+  const row = rows[poemId - 1];
+
+  if(row){
+
+    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+    const title = columns[1];
+    const content = columns[2];
+    const date = columns[4] || "Auto";
+
+    document.getElementById("fullPoem").innerHTML = `
+      <article class="poem-card">
+        <h2 style="font-size:36px;margin-bottom:10px;">${title}</h2>
+        <span class="date">प्रकाशित : ${date}</span>
+        <p style="margin-top:20px; line-height:1.9;">
+          ${content.replace(/\n/g,"<br><br>")}
+        </p>
+      </article>
+    `;
+  }
+
+});
+
+</script>
+
+</body>
+</html>

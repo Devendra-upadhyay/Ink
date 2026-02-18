@@ -67,6 +67,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
 }
 
 .logo-circle {

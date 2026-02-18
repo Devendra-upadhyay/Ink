@@ -96,13 +96,17 @@
       <!-- Step 1: Go to https://formspree.io -->
       <!-- Step 2: Create free form -->
       <!-- Step 3: Replace YOUR_FORM_ID below -->
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+      <form action="https://formspree.io/f/mdalddvr" method="POST" class="contact-form">
         
         <input type="text" name="name" placeholder="Your Name" required>
         
         <input type="email" name="email" placeholder="Your Email" required>
         
         <textarea name="message" placeholder="Write your message..." rows="6" required></textarea>
+
+        <input type="hidden" name="_subject" value="New Message from Ink Website">
+        <input type="hidden" name="_captcha" value="false">
+
         
         <button type="submit">Send Message</button>
       </form>
