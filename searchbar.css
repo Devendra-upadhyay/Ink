@@ -1,0 +1,14 @@
+.poem-search {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+}
+
+.poem-search::placeholder {
+  color: #888;
+}

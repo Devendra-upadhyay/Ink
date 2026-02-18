@@ -47,6 +47,18 @@
   <p>A collection of emotions written in words</p>
   <div class="divider"></div>
 </section>
+<!--Search Bar-->
+<!-- SEARCH BAR -->
+<section class="poem-search-section">
+  <input
+    type="text"
+    id="poemSearch"
+    placeholder="कविता खोजें..."
+    onkeyup="searchPoemsByName()"
+  />
+</section>
+
+
 
 <!-- FILTER -->
 <section class="filters">
@@ -59,7 +71,7 @@
 <!-- POEMS LIST -->
 <main class="poem-list">
 <!--********************************************************************-->
-  <article class="poem-card poem">
+  <article class="poem-card poem" data-title="Sawalon se bhare man ko  ">
     <div class="poem-header">
       <span class="poem-no">01</span>
       <h2>सवालों से भरे मन को ..</h2>
@@ -74,7 +86,7 @@
     </div>
   </article>
 <!--********************************************************************-->
-  <article class="poem-card shayari">
+  <article class="poem-card shayari" data-title="Main Laut Jana Chahta Hoon ">
     <div class="poem-header">
       <span class="poem-no">02</span>
       <h2>मैं लौट जाना चाहता हूं |</h2>
@@ -88,7 +100,7 @@
     </div>
   </article>
 <!--********************************************************************-->
-  <article class="poem-card song">
+  <article class="poem-card song" data-title="Is khamosh Raat Ka ">
     <div class="poem-header">
       <span class="poem-no">03</span>
       <h2>रात का गीत</h2>
@@ -103,6 +115,49 @@
     </div>
   </article>
 <!--********************************************************************-->
+<!-- GOOGLE FORM POEMS AUTO SECTION -->
+<div id="poems-container"></div>
+
+<script>
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR45SZTKrucg4zsoYELfEqNk0LNdjXzOUheCxpvioUOB0nUYITgqrEPoxwEi7Ucql16n_G1SrtSelfx/pub?output=csv")
+.then(response => response.text())
+.then(data => {
+  const rows = data.split("\n").slice(1);
+  let output = "";
+  let count = 3; // you already have 3 poems
+
+  rows.reverse().forEach(row => {
+    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+    const title = columns[1];
+    const content = columns[2];
+
+    if(title && content){
+      count++;
+
+      output += `
+        <article class="poem-card poem" data-title="${title}">
+          <div class="poem-header">
+            <span class="poem-no">${String(count).padStart(2, '0')}</span>
+            <h2>${title}</h2>
+          </div>
+          <span class="date">प्रकाशित : Auto</span>
+          <p>
+            ${content.replace(/\\n/g, "<br>")}
+          </p>
+          <div class="read-btn">
+            <a href="#">Read Full Poem →</a>
+          </div>
+        </article>
+      `;
+    }
+  });
+
+  document.getElementById("poems-container").innerHTML = output;
+});
+</script>
+
+
 </main>
 
 <!-- FOOTER -->

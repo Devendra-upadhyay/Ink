@@ -13,3 +13,12 @@ function filterPoems(category) {
     }
   });
 }
+function searchPoemsByName() {
+  const input = document.getElementById("poemSearch").value.toLowerCase();
+  const poems = document.querySelectorAll(".poem-card");
+
+  poems.forEach(poem => {
+    const title = poem.getAttribute("data-title").toLowerCase();
+    poem.style.display = title.includes(input) ? "block" : "none";
+  });
+}
