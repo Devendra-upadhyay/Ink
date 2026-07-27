@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Poems | Ink</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/Ink/css/index.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+  <div class="nav-left">
+
+    <div class="logo-circle">I</div>
+
+    <a href="index.html">
+      <span class="logo-text">Ink</span>
+    </a>
+
+  </div>
+
+
+  <!-- Hamburger -->
+
+  <div class="hamburger" id="hamburger">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </div>
+
+
+
+  <!-- Navigation -->
+
+  <nav class="nav-right" id="navMenu">
+
+    <a href="/Ink/index.html">Home</a>
+
+    <a href="poem.html" class="active">Poems</a>
+
+    <a href="/Ink/MainPages/article.html">Article</a>
+
+    <a href="/Ink/MainPages/about.html">About</a>
+
+    <a href="/Ink/MainPages/contact.html">Contact</a>
+
+  </nav>
+
+
+</header>
+
+
+
+<!-- ================= PAGE TITLE ================= -->
+
+<section class="page-title">
+
+  <h1>Poems</h1>
+
+  <p>
+    A collection of emotions written in words
+  </p>
+
+  <div class="divider"></div>
+
+</section>
+
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="poem-search-section">
+
+  <input
+    type="text"
+    id="poemSearch"
+    placeholder="कविता खोजें..."
+    onkeyup="searchPoemsByName()"
+  />
+
+</section>
+
+
+
+
+<!-- ================= FILTER ================= -->
+
+<section class="filters">
+
+  <button class="active" onclick="filterPoems('all')">
+    All
+  </button>
+
+  <button onclick="filterPoems('shayari')">
+    Shayari
+  </button>
+
+  <button onclick="filterPoems('poem')">
+    Poems
+  </button>
+
+  <button onclick="filterPoems('song')">
+    Songs
+  </button>
+
+</section>
+
+
+
+
+
+<!-- ================= POEMS LIST ================= -->
+
+<main class="poem-list" id="poems-container">
+
+
+<!-- Manual Poem 01 -->
+
+<article class="poem-card poem" data-title="Sawalon se bhare man ko">
+
+  <div class="poem-header">
+
+    <span class="poem-no">
+      01
+    </span>
+
+    <h2>
+      सवालों से भरे मन को ..
+    </h2>
+
+  </div>
+
+
+  <span class="date">
+    प्रकाशित : 12 जनवरी 2026
+  </span>
+
+
+  <p>
+    सवालों से भरे मन को,<br>
+    भला रोकोगे तुम कैसे...
+  </p>
+
+
+  <div class="read-btn">
+
+    <a href="Poem-Collection/poem-01.html">
+      Read Full Poem →
+    </a>
+
+  </div>
+
+
+</article>
+
+
+
+
+
+<!-- Manual Poem 02 -->
+
+<article class="poem-card shayari" data-title="Main Laut Jana Chahta Hoon">
+
+
+  <div class="poem-header">
+
+    <span class="poem-no">
+      02
+    </span>
+
+    <h2>
+      मैं लौट जाना चाहता हूं |
+    </h2>
+
+
+  </div>
+
+
+
+  <span class="date">
+    प्रकाशित : 02 फरवरी 2026
+  </span>
+
+
+
+  <p>
+    मैं लौट जाना चाहता हूं,<br>
+    उम्र के उस पड़ाव में..
+  </p>
+
+
+
+  <div class="read-btn">
+
+    <a href="Poem-Collection/poem-02.html">
+      Read Full Poem →
+    </a>
+
+  </div>
+
+
+</article>
+
+
+
+</main>
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+ Devendra Upadhyay | © 2026 Ink | All Rights Reserved
+
+</footer>
+
+
+
+
+
+<!-- ================= GOOGLE SHEET FETCH ================= -->
+
+<script>
+
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSFX2ZnW9YR_E2dJSXdjQ5PIESCAi0eS6p_ifMUAduAS0ytDoiSYxTdIUIeWRnB89J4KGhgMlbCB45R/pub?output=csv")
+
+.then(response => response.text())
+
+.then(data => {
+
+
+  const rows = data.split("\n").slice(1);
+
+  let output = "";
+
+  let count = 2;
+
+
+
+  rows.reverse().forEach(row => {
+
+
+    if(!row.trim()) return;
+
+
+
+    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+
+
+    const title = columns[1]?.replace(/\r/g,"").trim();
+
+    const content = columns[2]?.replace(/\r/g,"").trim();
+
+    const author = columns[3]?.replace(/\r/g,"").trim();
+
+    const date = columns[4]?.replace(/\r/g,"").trim();
+
+
+
+    if(title && content){
+
+
+      count++;
+
+
+      output += `
+
+      <article class="poem-card poem" data-title="${title.toLowerCase()}">
+
+
+        <div class="poem-header">
+
+          <span class="poem-no">
+            ${count.toString().padStart(2,'0')}
+          </span>
+
+
+          <h2>
+            ${title}
+          </h2>
+
+
+        </div>
+
+
+
+        <span class="date">
+          प्रकाशित : ${date}
+        </span>
+
+
+        <br>
+
+
+        <span class="author">
+          ✍ ${author}
+        </span>
+
+
+
+        <p class="poem-content">
+          ${content}
+        </p>
+
+
+
+      </article>
+
+
+      `;
+
+    }
+
+
+  });
+
+
+
+  document.getElementById("poems-container").innerHTML += output;
+
+
+})
+
+
+.catch(error => {
+
+console.log("Error loading poems:", error);
+
+});
+
+
+</script>
+
+
+
+
+<script src="/Ink/js/index.js"></script>
+
+
+
+</body>
+
+</html>

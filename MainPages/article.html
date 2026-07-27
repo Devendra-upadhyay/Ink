@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Articles | Ink</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/Ink/css/index.css">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="nav-left">
+
+<div class="logo-circle">I</div>
+
+<a href="index.html">
+<span class="logo-text">Ink</span>
+</a>
+
+</div>
+
+
+
+<div class="hamburger" id="hamburger">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+
+<nav class="nav-right" id="navMenu">
+
+<a href="/Ink/index.html">Home</a>
+
+<a href="/Ink/MainPages/poem.html">Poems</a>
+
+<a href="/Ink/MainPages/article.html" class="active">Articles</a>
+
+<a href="/Ink/MainPages/about.html">About</a>
+
+<a href="/Ink/MainPages/contact.html">Contact</a>
+
+</nav>
+
+
+</header>
+
+
+
+
+
+<!-- ARTICLE HEADER -->
+
+<section class="page-title">
+
+<h1>Articles</h1>
+
+<p>
+Ideas, thoughts and perspectives on education, politics, technology and society.
+</p>
+
+<div class="divider"></div>
+
+</section>
+
+
+
+
+
+
+<!-- SEARCH -->
+
+<section class="article-search-section">
+
+<input 
+type="text"
+id="articleSearch"
+placeholder="Search articles..."
+onkeyup="searchArticlesByName()">
+
+</section>
+
+
+
+
+
+
+<!-- CATEGORY FILTER -->
+
+<section class="filters">
+
+<button class="active" onclick="filterArticles('all')">
+All
+</button>
+
+<button onclick="filterArticles('education',this)">
+Education
+</button>
+
+<button onclick="filterArticles('politics')">
+Politics
+</button>
+
+<button onclick="filterArticles('technology')">
+Technology
+</button>
+
+<button onclick="filterArticles('society')">
+Society
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ARTICLES -->
+
+<main class="article-list" id="articles-container">
+
+
+
+<article class="article-card education" data-title="MP Education Reform">
+
+
+<div class="article-category">
+Education
+</div>
+
+
+<div class="article-header">
+
+<span class="article-no">
+01
+</span>
+
+
+<h2>
+MP Education Reform: A Need For Change
+</h2>
+
+
+</div>
+
+
+
+<div class="article-meta">
+
+<span>
+Published : 26 July 2026
+</span>
+
+<span>
+✍ Devendra Upadhyay
+</span>
+
+</div>
+
+
+
+
+<p>
+
+Education is not only about marks and examinations.
+It is about creating skills, curiosity and responsible citizens.
+A strong education system builds the future of society.
+
+</p>
+
+
+
+
+<div class="read-btn">
+
+<a href="Article-Collection/article-01.html">
+Read Full Article →
+</a>
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+<article class="article-card politics" data-title="Government Accountability">
+
+
+<div class="article-category">
+Politics
+</div>
+
+
+<div class="article-header">
+
+<span class="article-no">
+02
+</span>
+
+
+<h2>
+Government Accountability In Democracy
+</h2>
+
+
+</div>
+
+
+
+
+<div class="article-meta">
+
+<span>
+Published : 26 July 2026
+</span>
+
+<span>
+✍ Devendra Upadhyay
+</span>
+
+</div>
+
+
+
+
+<p>
+
+Democracy is not only about elections.
+It is also about questions, transparency and accountability
+between citizens and the government.
+
+</p>
+
+
+
+
+<div class="read-btn">
+
+<a href="Article-Collection/article-02.html">
+Read Full Article →
+</a>
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+<article class="article-card technology" data-title="Technology And Future">
+
+
+<div class="article-category">
+Technology
+</div>
+
+
+
+<div class="article-header">
+
+<span class="article-no">
+03
+</span>
+
+
+<h2>
+Technology And The Future Of India
+</h2>
+
+
+</div>
+
+
+
+
+<div class="article-meta">
+
+<span>
+Published : 26 July 2026
+</span>
+
+
+<span>
+✍ Devendra Upadhyay
+</span>
+
+</div>
+
+
+
+
+<p>
+
+Technology is changing the way people learn,
+work and communicate.
+The future belongs to those who understand technology
+and use it responsibly.
+
+</p>
+
+
+
+
+<div class="read-btn">
+
+<a href="Article-Collection/article-03.html">
+Read Full Article →
+</a>
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+Devendra Upadhyay | © 2026 Ink | All Rights Reserved
+
+</footer>
+
+
+
+
+
+<script src="/Ink/js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

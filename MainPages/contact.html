@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Contact Me | Ink</title>
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/ink/css/index.css">
 </head>
+
 <body>
 
   <!-- Navbar -->
   <header class="navbar">
-  <div class="nav-left">
-    <div class="logo-circle">I</div>
-    <a href="index.html"><span class="logo-text">Ink</span></a>
-  </div>
 
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+    <div class="nav-left">
+      <div class="logo-circle">I</div>
+      <a href="index.html">
+        <span class="logo-text">Ink</span>
+      </a>
+    </div>
 
-  <nav class="nav-right" id="navMenu">
-    <a href="index.html" class="active">Home</a>
-    <a href="poem.html">Poems</a>
-    <a href="featured-poems.html">Featured</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-  <!-- Hero Section -->
+    <nav class="nav-right" id="navMenu">
+      <a href="/Ink/index.html">Home</a>
+      <a href="/Ink/MainPages/poem.html">Poems</a>
+      <a href="/Ink/MainPages/article.html">Article</a>
+      <a href="/Ink/MainPages/about.html">About</a>
+      <a href="/Ink/MainPages/contact.html" class="active">Contact</a>
+    </nav>
+
+  </header>
+
+
+  <!-- Page Title -->
   <section class="page-title">
     <h1>Contact Me</h1>
     <p>Let’s connect and share words</p>
     <div class="divider"></div>
   </section>
 
-  <!-- Main Contact Section -->
+
+  <!-- Contact Section -->
   <section class="contact-section">
+
     <div class="contact-left">
+
       <h2>Find Me Here</h2>
 
-      <!-- ===== UPDATED: Clickable Email ===== -->
       <div class="contact-item">
         <span class="icon">✉️</span>
         <span class="contact-text">
@@ -57,7 +67,7 @@
         </span>
       </div>
 
-      <!-- ===== ADDED: Second Email Clickable ===== -->
+
       <div class="contact-item">
         <span class="icon">✉️</span>
         <span class="contact-text">
@@ -67,8 +77,7 @@
         </span>
       </div>
 
-      <!-- ===== ADDED: WhatsApp Direct Chat ===== -->
-      <!-- Replace 919876543210 with your real number -->
+
       <div class="contact-item">
         <span class="icon">📱</span>
         <span class="contact-text">
@@ -78,7 +87,7 @@
         </span>
       </div>
 
-      <!-- ===== UPDATED: Instagram Direct Link ===== -->
+
       <div class="contact-item">
         <span class="icon">📷</span>
         <span class="contact-text">
@@ -87,38 +96,58 @@
           </a>
         </span>
       </div>
+
     </div>
 
+
     <div class="contact-right">
+
       <h2>Send Me a Message</h2>
 
-      <!-- ===== UPDATED: Connected to Formspree ===== -->
-      <!-- Step 1: Go to https://formspree.io -->
-      <!-- Step 2: Create free form -->
-      <!-- Step 3: Replace YOUR_FORM_ID below -->
       <form action="https://formspree.io/f/mdalddvr" method="POST" class="contact-form">
-        
-        <input type="text" name="name" placeholder="Your Name" required>
-        
-        <input type="email" name="email" placeholder="Your Email" required>
-        
-        <textarea name="message" placeholder="Write your message..." rows="6" required></textarea>
+
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Your Name" 
+          required
+        >
+
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Your Email" 
+          required
+        >
+
+        <textarea 
+          name="message" 
+          placeholder="Write your message..." 
+          rows="6" 
+          required>
+        </textarea>
 
         <input type="hidden" name="_subject" value="New Message from Ink Website">
         <input type="hidden" name="_captcha" value="false">
 
-        
-        <button type="submit">Send Message</button>
+        <button type="submit">
+          Send Message
+        </button>
+
       </form>
 
     </div>
+
   </section>
+
 
   <!-- Footer -->
   <footer class="footer">
     Devendra Upadhyay | © 2026 Ink | All Rights Reserved
   </footer>
 
+
+  <script src="/Ink/js/index.js"></script>
+
 </body>
-<script src="main.js"></script>
 </html>
