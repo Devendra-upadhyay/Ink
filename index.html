@@ -1,226 +1,1715 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0b">
+    <meta name="description" content="Independent Ink — हिंदी कविताओं, विचारों और अनकही भावनाओं का एक साहित्यिक संसार।">
 
-  <meta charset="UTF-8" />
-  <title>Ink — Hindi Poetry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Independent Ink | Words That Stay</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="/Ink/css/index.css">
+    <link rel="stylesheet" href="/Ink/css/index.css">
 
+    <style>
+        /* =====================================
+           INDEPENDENT INK — HOMEPAGE
+           Original black, charcoal and gold theme
+        ===================================== */
+
+        :root {
+            --home-bg: #0b0b0b;
+            --home-surface: #101010;
+            --home-card: #141414;
+            --home-gold: #c9a24d;
+            --home-gold-light: #dfbd76;
+            --home-text: #e9e5dd;
+            --home-muted: #a29d93;
+            --home-border: rgba(201, 162, 77, 0.22);
+            --home-serif: "Playfair Display", Georgia, serif;
+            --home-hindi: "Noto Serif Devanagari", serif;
+            --home-sans: "Inter", sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--home-bg);
+            color: var(--home-text);
+            font-family: var(--home-sans);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(
+                    ellipse at 75% 5%,
+                    rgba(201, 162, 77, 0.055),
+                    transparent 40%
+                );
+            content: "";
+            pointer-events: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        a,
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--home-gold-light);
+            outline-offset: 5px;
+        }
+
+        .home-container {
+            width: min(1160px, calc(100% - 56px));
+            margin-inline: auto;
+        }
+
+        .home-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--home-gold);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            line-height: 1.7;
+            text-transform: uppercase;
+        }
+
+        .home-eyebrow::before {
+            width: 27px;
+            height: 1px;
+            flex-shrink: 0;
+            background: var(--home-gold);
+            content: "";
+        }
+
+        .home-section {
+            padding: 105px 0;
+        }
+
+        .home-section-heading {
+            max-width: 650px;
+            margin-bottom: 42px;
+        }
+
+        .home-section-heading h2 {
+            margin: 14px 0 12px;
+            font-family: var(--home-serif);
+            font-size: clamp(32px, 4vw, 45px);
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .home-section-heading p {
+            max-width: 560px;
+            margin: 0;
+            color: var(--home-muted);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .home-rule {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--home-border),
+                transparent
+            );
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            min-height: 48px;
+            padding: 12px 23px;
+            border: 1px solid var(--home-gold);
+            background: var(--home-gold);
+            color: #111;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .home-button:hover {
+            background: transparent;
+            color: var(--home-gold-light);
+        }
+
+        .home-button-outline {
+            border-color: var(--home-border);
+            background: transparent;
+            color: var(--home-text);
+        }
+
+        .home-button-outline:hover {
+            border-color: var(--home-gold);
+            background: rgba(201, 162, 77, 0.06);
+            color: var(--home-gold-light);
+        }
+
+        .home-text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--home-gold);
+            color: var(--home-gold-light);
+            font-size: 11px;
+            transition: gap 0.25s ease;
+        }
+
+        .home-text-link:hover {
+            gap: 19px;
+        }
+
+        /* =====================================
+           NAVIGATION
+        ===================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            min-height: 78px;
+            padding: 12px max(28px, calc((100vw - 1200px) / 2));
+            border-bottom: 1px solid rgba(201, 162, 77, 0.14);
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .home-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            display: grid;
+            width: 39px;
+            height: 39px;
+            place-items: center;
+            border: 1px solid var(--home-gold);
+            border-radius: 50%;
+            color: var(--home-gold);
+            font-family: var(--home-serif);
+            font-size: 23px;
+        }
+
+        .logo-text {
+            color: var(--home-text);
+            font-family: var(--home-serif);
+            font-size: 23px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .logo-text span {
+            color: var(--home-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 29px;
+        }
+
+        .nav-right a {
+            position: relative;
+            padding: 8px 0;
+            color: #b9b4aa;
+            font-size: 11px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background: var(--home-gold);
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-right a:hover,
+        .nav-right a.active {
+            color: var(--home-gold-light);
+        }
+
+        .nav-right a:hover::after,
+        .nav-right a.active::after {
+            transform: scaleX(1);
+        }
+
+        /* A dedicated ID keeps the homepage menu independent
+           of any older hamburger controller in index.js. */
+
+        .home-hamburger {
+            display: none;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            border: 1px solid var(--home-border);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .home-hamburger span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            margin: 5px 0;
+            background: var(--home-gold);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .home-hamburger.is-open span:first-child {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .home-hamburger.is-open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .home-hamburger.is-open span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        /* =====================================
+           HERO — EDITORIAL SPLIT
+        ===================================== */
+
+        .home-hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+            align-items: center;
+            gap: 55px;
+            min-height: 650px;
+            padding-top: 90px;
+            padding-bottom: 100px;
+        }
+
+        .home-hero-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .home-hero-copy > .home-eyebrow {
+            margin-bottom: 27px;
+        }
+
+        .home-hero h1 {
+            margin: 0;
+            font-family: var(--home-serif);
+            font-size: clamp(48px, 6vw, 76px);
+            font-weight: 400;
+            letter-spacing: -1.8px;
+            line-height: 1.14;
+        }
+
+        .home-hero h1 span {
+            display: block;
+            color: var(--home-gold);
+            font-style: italic;
+        }
+
+        .home-hero-hindi {
+            margin: 29px 0 0;
+            color: #ddd5c8;
+            font-family: var(--home-hindi);
+            font-size: clamp(19px, 2vw, 24px);
+            line-height: 2;
+        }
+
+        .home-hero-description {
+            max-width: 465px;
+            margin: 15px 0 0;
+            color: var(--home-muted);
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        .home-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 31px;
+        }
+
+        .home-hero-signature {
+            margin-top: 40px;
+            color: #81796c;
+            font-family: var(--home-serif);
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        .home-hero-signature span {
+            padding-left: 8px;
+            color: var(--home-gold);
+        }
+
+        /* Decorative literary panel, not a stock image */
+
+        .home-hero-art {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 430px;
+            padding: 38px;
+            border: 1px solid var(--home-border);
+            background:
+                radial-gradient(
+                    ellipse at 50% 45%,
+                    rgba(201, 162, 77, 0.12),
+                    transparent 65%
+                ),
+                linear-gradient(145deg, #171613, #0d0d0d 75%);
+        }
+
+        .home-hero-art::before {
+            position: absolute;
+            inset: 15px;
+            border: 1px solid rgba(201, 162, 77, 0.12);
+            content: "";
+            pointer-events: none;
+        }
+
+        .home-art-orbit {
+            position: absolute;
+            width: 230px;
+            height: 310px;
+            border: 1px solid rgba(201, 162, 77, 0.13);
+            transform: rotate(25deg);
+        }
+
+        .home-art-orbit-two {
+            width: 190px;
+            height: 270px;
+            transform: rotate(-25deg);
+        }
+
+        .home-art-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .home-art-quote {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--home-gold);
+            font-family: var(--home-serif);
+            font-size: 64px;
+            line-height: 1;
+        }
+
+        .home-art-hindi {
+            color: var(--home-text);
+            font-family: var(--home-hindi);
+            font-size: clamp(23px, 2.7vw, 31px);
+            line-height: 2;
+        }
+
+        .home-art-line {
+            width: 45px;
+            height: 1px;
+            margin: 25px auto 17px;
+            background: var(--home-gold);
+        }
+
+        .home-art-caption {
+            color: var(--home-gold);
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        .home-art-index {
+            position: absolute;
+            right: 24px;
+            bottom: 20px;
+            color: #716959;
+            font-family: var(--home-serif);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* =====================================
+           THREE PILLARS
+        ===================================== */
+
+        .home-pillars {
+            border-top: 1px solid var(--home-border);
+            border-bottom: 1px solid var(--home-border);
+            background: #0e0e0e;
+        }
+
+        .home-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .home-pillar {
+            padding: 29px 20px;
+            text-align: center;
+        }
+
+        .home-pillar + .home-pillar {
+            border-left: 1px solid rgba(201, 162, 77, 0.13);
+        }
+
+        .home-pillar h2 {
+            margin: 0 0 4px;
+            color: var(--home-gold);
+            font-family: var(--home-serif);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .home-pillar p {
+            margin: 0;
+            color: var(--home-muted);
+            font-size: 9px;
+            letter-spacing: 1.3px;
+        }
+
+        /* =====================================
+           FEATURED POEM
+        ===================================== */
+
+        .home-featured {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            align-items: center;
+            gap: 75px;
+        }
+
+        .home-featured-art {
+            position: relative;
+            display: grid;
+            min-height: 420px;
+            padding: 38px;
+            place-items: center;
+            border: 1px solid var(--home-border);
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(201, 162, 77, 0.09),
+                    transparent 68%
+                ),
+                #111110;
+        }
+
+        .home-featured-art::before {
+            position: absolute;
+            inset: 15px;
+            border: 1px solid rgba(201, 162, 77, 0.12);
+            content: "";
+        }
+
+        .home-featured-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .home-featured-inner .quote-symbol {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--home-gold);
+            font-family: var(--home-serif);
+            font-size: 55px;
+            line-height: 1;
+        }
+
+        .home-featured-inner .poem-title-art {
+            font-family: var(--home-hindi);
+            font-size: clamp(23px, 3vw, 32px);
+            line-height: 1.9;
+        }
+
+        .home-featured-inner small {
+            display: block;
+            margin-top: 23px;
+            color: var(--home-gold);
+            font-size: 9px;
+            letter-spacing: 2.5px;
+        }
+
+        .home-featured-copy > .home-eyebrow {
+            margin-bottom: 15px;
+        }
+
+        .home-featured-copy h2 {
+            margin: 0 0 20px;
+            font-family: var(--home-hindi);
+            font-size: clamp(30px, 4vw, 40px);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .home-featured-verse {
+            padding-left: 19px;
+            border-left: 1px solid var(--home-gold);
+            color: #d0c6b5;
+            font-family: var(--home-hindi);
+            font-size: 17px;
+            line-height: 2.1;
+        }
+
+        .home-featured-copy > p {
+            margin: 22px 0;
+            color: var(--home-muted);
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        /* =====================================
+           WRITING COLLECTION
+        ===================================== */
+
+        .home-writing-section {
+            border-top: 1px solid rgba(201, 162, 77, 0.12);
+            border-bottom: 1px solid rgba(201, 162, 77, 0.12);
+            background: #0e0e0e;
+        }
+
+        .home-writing-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .home-writing-heading .home-section-heading {
+            margin-bottom: 38px;
+        }
+
+        .home-writing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .home-writing-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 310px;
+            padding: 28px 25px;
+            border: 1px solid rgba(201, 162, 77, 0.16);
+            background: var(--home-card);
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .home-writing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--home-border);
+            background: #191816;
+        }
+
+        .home-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .home-card-category {
+            color: var(--home-gold);
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .home-card-number {
+            color: #645b4c;
+            font-family: var(--home-serif);
+            font-size: 22px;
+        }
+
+        .home-writing-card h3 {
+            margin: 25px 0 12px;
+            font-family: var(--home-hindi);
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .home-writing-card p {
+            margin: 0 0 25px;
+            color: var(--home-muted);
+            font-family: var(--home-hindi);
+            font-size: 12px;
+            line-height: 2.1;
+        }
+
+        .home-writing-card .home-text-link {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        /* =====================================
+           INK PHILOSOPHY
+        ===================================== */
+
+        .home-philosophy {
+            padding: 110px 0;
+            text-align: center;
+        }
+
+        .home-philosophy .home-eyebrow {
+            justify-content: center;
+        }
+
+        .home-philosophy .home-eyebrow::after {
+            width: 27px;
+            height: 1px;
+            background: var(--home-gold);
+            content: "";
+        }
+
+        .home-philosophy blockquote {
+            max-width: 830px;
+            margin: 33px auto 22px;
+            font-family: var(--home-hindi);
+            font-size: clamp(24px, 3.8vw, 38px);
+            font-weight: 400;
+            line-height: 2;
+        }
+
+        .home-philosophy blockquote span {
+            color: var(--home-gold);
+        }
+
+        .home-philosophy p {
+            max-width: 560px;
+            margin: 0 auto;
+            color: var(--home-muted);
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        .home-philosophy-symbol {
+            display: block;
+            margin-top: 27px;
+            color: var(--home-gold);
+            font-family: var(--home-serif);
+            font-size: 28px;
+        }
+
+        /* =====================================
+           ABOUT THE WRITER
+        ===================================== */
+
+        .home-about-section {
+            padding: 85px 0;
+            border-top: 1px solid rgba(201, 162, 77, 0.12);
+            border-bottom: 1px solid rgba(201, 162, 77, 0.12);
+            background: #0e0e0e;
+        }
+
+        .home-about {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            align-items: center;
+            gap: 75px;
+        }
+
+        .home-about-emblem {
+            display: grid;
+            width: min(100%, 275px);
+            aspect-ratio: 1;
+            margin-inline: auto;
+            place-items: center;
+            border: 1px solid var(--home-border);
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(201, 162, 77, 0.09),
+                transparent 68%
+            );
+        }
+
+        .home-about-emblem-inner {
+            display: grid;
+            width: 78%;
+            height: 78%;
+            place-items: center;
+            border: 1px solid rgba(201, 162, 77, 0.17);
+            border-radius: 50%;
+            color: var(--home-gold);
+            font-family: var(--home-serif);
+            font-size: 72px;
+            font-style: italic;
+        }
+
+        .home-about-copy h2 {
+            margin: 14px 0 20px;
+            font-family: var(--home-serif);
+            font-size: clamp(32px, 4vw, 43px);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .home-about-copy h2 span {
+            color: var(--home-gold);
+        }
+
+        .home-about-copy p {
+            margin: 0 0 15px;
+            color: var(--home-muted);
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        .home-author-name {
+            margin-top: 24px;
+            color: var(--home-gold-light);
+            font-family: var(--home-serif);
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .home-about-link {
+            margin-top: 22px;
+        }
+
+        /* =====================================
+           CLOSING SECTION
+        ===================================== */
+
+        .home-closing {
+            padding: 95px 0;
+            text-align: center;
+        }
+
+        .home-closing .home-eyebrow {
+            justify-content: center;
+        }
+
+        .home-closing .home-eyebrow::after {
+            width: 27px;
+            height: 1px;
+            background: var(--home-gold);
+            content: "";
+        }
+
+        .home-closing h2 {
+            margin: 18px 0;
+            font-family: var(--home-serif);
+            font-size: clamp(32px, 4vw, 44px);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .home-closing p {
+            max-width: 510px;
+            margin: 0 auto 28px;
+            color: var(--home-muted);
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        .home-footer {
+            padding: 43px 0 22px;
+            border-top: 1px solid var(--home-border);
+            background: #090909;
+        }
+
+        .home-footer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 35px;
+            padding-bottom: 32px;
+        }
+
+        .home-footer-brand {
+            max-width: 340px;
+        }
+
+        .home-footer-brand p {
+            margin: 12px 0 0;
+            color: var(--home-muted);
+            font-size: 11px;
+            line-height: 2;
+        }
+
+        .home-footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            padding-top: 8px;
+        }
+
+        .home-footer-links a {
+            color: var(--home-muted);
+            font-size: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .home-footer-links a:hover {
+            color: var(--home-gold);
+        }
+
+        .home-footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(201, 162, 77, 0.12);
+            color: #777168;
+            font-size: 10px;
+        }
+
+        .home-footer-motto {
+            color: var(--home-gold);
+            letter-spacing: 1.5px;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (min-width: 1450px) {
+            .home-hero {
+                min-height: 700px;
+            }
+        }
+
+        @media (max-width: 950px) {
+            .navbar {
+                padding-inline: 25px;
+            }
+
+            .nav-right {
+                gap: 19px;
+            }
+
+            .home-hero {
+                gap: 32px;
+                min-height: 580px;
+            }
+
+            .home-hero-art {
+                min-height: 370px;
+                padding: 25px;
+            }
+
+            .home-featured {
+                gap: 40px;
+            }
+
+            .home-writing-grid {
+                gap: 14px;
+            }
+
+            .home-writing-card {
+                padding: 22px 18px;
+            }
+
+            .home-about {
+                gap: 45px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .home-container {
+                width: calc(100% - 38px);
+            }
+
+            .navbar {
+                min-height: 72px;
+                padding-inline: 19px;
+            }
+
+            .logo-text {
+                font-size: 21px;
+            }
+
+            .home-hamburger {
+                display: block;
+                flex-shrink: 0;
+            }
+
+            .nav-right {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 10px 22px 18px;
+                border-bottom: 1px solid var(--home-border);
+                background: #0c0c0c;
+            }
+
+            .nav-right.open {
+                display: flex;
+            }
+
+            .nav-right a {
+                padding: 13px 3px;
+                border-bottom: 1px solid rgba(201, 162, 77, 0.09);
+                font-size: 12px;
+            }
+
+            .nav-right a::after {
+                display: none;
+            }
+
+            .home-hero {
+                grid-template-columns: 1fr;
+                gap: 44px;
+                min-height: auto;
+                padding-top: 75px;
+                padding-bottom: 70px;
+            }
+
+            .home-hero h1 {
+                font-size: clamp(46px, 10vw, 65px);
+                letter-spacing: -1px;
+            }
+
+            .home-hero-hindi {
+                font-size: 19px;
+            }
+
+            .home-hero-art {
+                min-height: 335px;
+            }
+
+            .home-pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-pillar {
+                padding: 21px 15px;
+            }
+
+            .home-pillar + .home-pillar {
+                border-top: 1px solid rgba(201, 162, 77, 0.13);
+                border-left: 0;
+            }
+
+            .home-section {
+                padding: 75px 0;
+            }
+
+            .home-section-heading {
+                margin-bottom: 30px;
+            }
+
+            .home-featured {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+
+            .home-featured-art {
+                min-height: 320px;
+            }
+
+            .home-featured-copy h2 {
+                font-size: 31px;
+            }
+
+            .home-writing-heading {
+                display: block;
+            }
+
+            .home-writing-heading .home-section-heading {
+                margin-bottom: 23px;
+            }
+
+            .home-writing-heading > a {
+                margin-bottom: 28px;
+            }
+
+            .home-writing-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .home-writing-card {
+                min-height: 250px;
+                padding: 25px;
+            }
+
+            .home-writing-card h3 {
+                margin-top: 21px;
+            }
+
+            .home-philosophy {
+                padding: 78px 0;
+            }
+
+            .home-philosophy blockquote {
+                font-size: 25px;
+            }
+
+            .home-about-section {
+                padding: 70px 0;
+            }
+
+            .home-about {
+                grid-template-columns: 1fr;
+                gap: 38px;
+            }
+
+            .home-about-emblem {
+                width: 215px;
+            }
+
+            .home-about-emblem-inner {
+                font-size: 62px;
+            }
+
+            .home-closing {
+                padding: 75px 0;
+            }
+
+            .home-footer-top {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .home-footer-links {
+                gap: 17px;
+            }
+
+            .home-footer-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 9px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .home-container {
+                width: calc(100% - 30px);
+            }
+
+            .logo-circle {
+                width: 34px;
+                height: 34px;
+                font-size: 20px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+            }
+
+            .home-hero h1 {
+                font-size: 43px;
+            }
+
+            .home-hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .home-button {
+                width: 100%;
+            }
+
+            .home-hero-art {
+                min-height: 290px;
+                padding: 20px;
+            }
+
+            .home-featured-art {
+                min-height: 285px;
+                padding: 25px;
+            }
+
+            .home-writing-card {
+                padding: 21px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <!-- NAVIGATION -->
 
-<!-- ================= NAVBAR ================= -->
+    <header class="navbar">
 
-<header class="navbar">
+        <div class="nav-left">
+            <a href="/Ink/index.html" class="home-brand" aria-label="Independent Ink home">
+                <span class="logo-circle" aria-hidden="true">I</span>
+                <span class="logo-text">Independent <span>Ink.</span></span>
+            </a>
+        </div>
 
-  <div class="nav-left">
+        <button
+            class="home-hamburger"
+            id="homeHamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="homeNavMenu"
+            aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <div class="logo-circle">I</div>
+        <nav class="nav-right" id="homeNavMenu" aria-label="Main navigation">
+            <a href="/Ink/index.html" class="active" aria-current="page">Home</a>
+            <a href="/Ink/MainPages/poem.html">Poems</a>
+            <a href="/Ink/MainPages/article.html">Articles</a>
+            <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
+            <a href="/Ink/MainPages/contact.html">Contact</a>
+        </nav>
 
-    <a href="/Ink/index.html">
-      <span class="logo-text">Ink</span>
-    </a>
+    </header>
 
-  </div>
+    <main>
 
+        <!-- HERO -->
 
-  <!-- HAMBURGER -->
+        <section class="home-container home-hero">
 
-  <div class="hamburger" id="hamburger">
+            <div class="home-hero-copy">
 
-    <span></span>
-    <span></span>
-    <span></span>
+                <span class="home-eyebrow">An independent literary space</span>
 
-  </div>
+                <h1>
+                    Words have
+                    <span>a life of their own.</span>
+                </h1>
 
+                <p class="home-hero-hindi">
+                    कुछ बातें कही नहीं जातीं,<br>
+                    बस लिख दी जाती हैं।
+                </p>
 
+                <p class="home-hero-description">
+                    A quiet corner for poetry, reflections and thoughts
+                    that deserve more than a passing moment. A place where
+                    words find their meaning and silence finds its voice.
+                </p>
 
-  <!-- NAV LINKS -->
+                <div class="home-hero-actions">
+                    <a href="/Ink/MainPages/poem.html" class="home-button">
+                        Explore poetry <span aria-hidden="true">↗</span>
+                    </a>
 
-  <nav class="nav-right" id="navMenu">
+                    <a href="#about" class="home-button home-button-outline">
+                        Meet the writer
+                    </a>
+                </div>
 
-    <a href="index.html" class="active">Home</a>
-    <a href="/Ink/MainPages/poem.html">Poems</a>
-    <a href="/Ink/MainPages/article.html">Article</a>
-    <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
-    <a href="/Ink/MainPages/contact.html">Contact</a>
+                <div class="home-hero-signature">
+                    Written with thought. Remembered with feeling.
+                    <span aria-hidden="true">✦</span>
+                </div>
 
-  </nav>
+            </div>
 
+            <div class="home-hero-art" aria-label="Independent Ink literary artwork">
 
-</header>
+                <span class="home-art-orbit" aria-hidden="true"></span>
+                <span class="home-art-orbit home-art-orbit-two" aria-hidden="true"></span>
 
+                <div class="home-art-content">
+                    <span class="home-art-quote" aria-hidden="true">“</span>
 
+                    <div class="home-art-hindi">
+                        शब्दों में भी<br>
+                        एक दुनिया होती है।
+                    </div>
 
+                    <div class="home-art-line"></div>
 
-<!-- ================= HERO ================= -->
+                    <span class="home-art-caption">INDEPENDENT INK</span>
+                </div>
 
-<section class="hero">
+                <span class="home-art-index" aria-hidden="true">EST. IN WORDS</span>
 
-  <div class="hero-content">
+            </div>
 
-    <h1>"Welcome"</h1>
+        </section>
 
-    <h1>To</h1>
+        <!-- THREE PILLARS -->
 
-    <h1>Exploring the Beauty of Hindi Poetry</h1>
+        <section class="home-pillars" aria-label="What you can discover">
 
+            <div class="home-container home-pillars-grid">
 
-    <p>
-      Words that touch the soul, emotions that speak beyond language
-    </p>
+                <div class="home-pillar">
+                    <h2>Poetry</h2>
+                    <p>THE LANGUAGE OF FEELING</p>
+                </div>
 
+                <div class="home-pillar">
+                    <h2>Reflections</h2>
+                    <p>THOUGHTS BEYOND THE OBVIOUS</p>
+                </div>
 
-    <a href="featured-poems.html" class="cta">
-      Read Featured Poems
-    </a>
+                <div class="home-pillar">
+                    <h2>Original Writing</h2>
+                    <p>WORDS FROM AN INDEPENDENT VOICE</p>
+                </div>
 
+            </div>
 
-  </div>
+        </section>
 
-</section>
+        <!-- FEATURED POEM -->
 
+        <section class="home-section" id="featured">
 
+            <div class="home-container">
 
+                <div class="home-section-heading">
+                    <span class="home-eyebrow">Selected writing</span>
+                    <h2>Some words deserve a pause.</h2>
+                    <p>
+                        Enter a thought, stay with a feeling, and take
+                        whatever meaning you find in the words.
+                    </p>
+                </div>
 
-<!-- ================= WELCOME ================= -->
+                <div class="home-featured">
 
-<!--
-<section class="welcome">
+                    <div class="home-featured-art" aria-label="Featured Hindi poem artwork">
 
-  <div class="welcome-visual">
-  </div>
+                        <div class="home-featured-inner">
+                            <span class="quote-symbol" aria-hidden="true">❝</span>
 
+                            <div class="poem-title-art">
+                                सवालों से<br>
+                                भरे मन को..
+                            </div>
 
-  <div class="welcome-text">
+                            <small>A POEM BY DEVENDRA</small>
+                        </div>
 
-    <h2>Welcome to Ink</h2>
+                    </div>
 
-    <p>
-      Immerse yourself in the world of Hindi poetry, where every verse becomes
-      a brushstroke on the canvas of emotion. Ink is a curated space for
-      timeless words, silent feelings, and honest expressions.
-    </p>
+                    <div class="home-featured-copy">
 
+                        <span class="home-eyebrow">Featured poem</span>
 
-    <div class="rating">★★★★★</div>
+                        <h2>सवालों से भरे मन को..</h2>
 
-    <div class="author">
-      — Priya Malhotra
-    </div>
+                        <div class="home-featured-verse">
+                            कुछ प्रश्न उत्तर नहीं चाहते,<br>
+                            केवल एक शांत हृदय चाहते हैं।
+                        </div>
 
+                        <p>
+                            सवालों से भरा मन, बीते हुए समय की यादें,
+                            और उन उत्तरों की तलाश जो शायद कभी मिलें ही नहीं।
+                            यह कविता उन विचारों के बारे में है जो भीतर चलते
+                            रहते हैं, तब भी जब बाहर सब शांत दिखाई देता है।
+                        </p>
 
-  </div>
+                        <a href="/Ink/MainPages/poem.html" class="home-text-link">
+                            Read the poem <span aria-hidden="true">→</span>
+                        </a>
 
-</section>
--->
+                    </div>
 
+                </div>
 
+            </div>
 
+        </section>
 
+        <!-- RECENT WRITING -->
 
-<!-- ================= ACTION CARDS ================= -->
+        <section class="home-section home-writing-section" id="writing">
 
-<section class="actions">
+            <div class="home-container">
 
+                <div class="home-writing-heading">
 
-  <h3>
-    From the Heart of Readers
-  </h3>
+                    <div class="home-section-heading">
+                        <span class="home-eyebrow">From the writer's desk</span>
+                        <h2>Words worth returning to.</h2>
+                        <p>
+                            Poetry and reflections for the moments when
+                            ordinary words are not enough.
+                        </p>
+                    </div>
 
+                    <a href="/Ink/MainPages/poem.html" class="home-text-link">
+                        Explore all writing <span aria-hidden="true">→</span>
+                    </a>
 
+                </div>
 
-  <div class="cards">
+                <div class="home-writing-grid">
 
+                    <article class="home-writing-card">
 
-    <div class="card">
+                        <div class="home-card-top">
+                            <span class="home-card-category">Poetry</span>
+                            <span class="home-card-number" aria-hidden="true">01</span>
+                        </div>
 
-      <h4>About Me</h4>
+                        <h3>सवालों से भरे मन को..</h3>
 
-      <p>
-        Discover the Poet
-      </p>
+                        <p>
+                            हर उत्तर के पीछे भी एक नया सवाल रहता है।
+                            कुछ प्रश्न मन में रहकर ही अपनी कहानी कहते हैं।
+                        </p>
 
-      <a href="about.html" class="card-btn">
-        Learn More
-      </a>
+                        <a href="/Ink/MainPages/poem.html" class="home-text-link">
+                            Explore poems <span aria-hidden="true">→</span>
+                        </a>
 
-    </div>
+                    </article>
 
+                    <article class="home-writing-card">
 
+                        <div class="home-card-top">
+                            <span class="home-card-category">Reflection</span>
+                            <span class="home-card-number" aria-hidden="true">02</span>
+                        </div>
 
+                        <h3>मैं लौट जाना चाहता हूं</h3>
 
-    <div class="card">
+                        <p>
+                            कभी-कभी लौटने की इच्छा किसी जगह के लिए नहीं,
+                            बल्कि अपने पुराने रूप से मिलने के लिए होती है।
+                        </p>
 
-      <h4>Read Poems</h4>
+                        <a href="/Ink/MainPages/poem.html" class="home-text-link">
+                            Explore poems <span aria-hidden="true">→</span>
+                        </a>
 
-      <p>
-        Browse the Collection
-      </p>
+                    </article>
 
-      <a href="poem.html" class="card-btn">
-        Learn More
-      </a>
+                    <article class="home-writing-card">
 
-    </div>
+                        <div class="home-card-top">
+                            <span class="home-card-category">Articles</span>
+                            <span class="home-card-number" aria-hidden="true">03</span>
+                        </div>
 
+                        <h3>विचारों के उस पार</h3>
 
+                        <p>
+                            उन विचारों के बारे में, जो हमारे नज़रिए को
+                            बदलते हैं और दुनिया को नए अर्थ देते हैं।
+                        </p>
 
+                        <a href="/Ink/MainPages/article.html" class="home-text-link">
+                            Explore articles <span aria-hidden="true">→</span>
+                        </a>
 
-    <div class="card">
+                    </article>
 
-      <h4>Get in Touch</h4>
+                </div>
 
-      <p>
-        Connect & Share Words
-      </p>
+            </div>
 
-      <a href="contact.html" class="card-btn">
-        Learn More
-      </a>
+        </section>
 
-    </div>
+        <!-- PHILOSOPHY -->
 
+        <section class="home-philosophy">
 
-  </div>
+            <div class="home-container">
 
+                <span class="home-eyebrow">The thought behind Ink</span>
 
-</section>
+                <blockquote>
+                    हर ख़ामोशी खाली नहीं होती,<br>
+                    कुछ में <span>पूरी एक दुनिया</span> बसी होती है।
+                </blockquote>
 
+                <p>
+                    Ink is a space for thoughts that stay with us,
+                    feelings that resist explanation, and moments
+                    that become meaningful when put into words.
+                </p>
 
+                <span class="home-philosophy-symbol" aria-hidden="true">✦</span>
 
+            </div>
 
+        </section>
 
-<!-- ================= FOOTER ================= -->
+        <!-- ABOUT THE WRITER -->
 
-<footer class="footer">
+        <section class="home-about-section" id="about">
 
-  Devendra Upadhyay | © 2026 Ink | All Rights Reserved
+            <div class="home-container home-about">
 
-</footer>
+                <div class="home-about-emblem" aria-hidden="true">
+                    <div class="home-about-emblem-inner">I.</div>
+                </div>
 
+                <div class="home-about-copy">
 
+                    <span class="home-eyebrow">Behind the words</span>
 
+                    <h2>
+                        A little about<br>
+                        <span>the writer.</span>
+                    </h2>
 
+                    <p>
+                        I am Devendra Upadhyay, the writer behind
+                        Independent Ink — a personal space for poetry,
+                        ideas and observations about life.
+                    </p>
 
-<!-- ================= JAVASCRIPT ================= -->
+                    <p>
+                        I write to give shape to thoughts that are
+                        difficult to express in everyday conversations.
+                        Through poetry and reflective writing, I explore
+                        time, human emotions, questions and the quiet
+                        details that often go unnoticed.
+                    </p>
 
+                    <p>
+                        Independent Ink is an evolving collection of
+                        those thoughts — written independently,
+                        shared honestly and open to interpretation.
+                    </p>
 
+                    <div class="home-author-name">— Devendra Upadhyay</div>
 
-<script src="/Ink/js/index.js"></script>
+                    <div class="home-about-link">
+                        <a href="/Ink/MainPages/Portfolio.html" class="home-text-link">
+                            More about my work <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
 
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CLOSING -->
+
+        <section class="home-closing">
+
+            <div class="home-container">
+
+                <span class="home-eyebrow">Take your time</span>
+
+                <h2>Stay for a few words.</h2>
+
+                <p>
+                    There is no rush here. Read a poem, explore a thought,
+                    or simply spend a moment with words that speak to you.
+                </p>
+
+                <a href="/Ink/MainPages/poem.html" class="home-button">
+                    Enter the world of Ink <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="home-footer">
+
+        <div class="home-container">
+
+            <div class="home-footer-top">
+
+                <div class="home-footer-brand">
+
+                    <a href="/Ink/index.html" class="logo-text">
+                        Independent <span>Ink.</span>
+                    </a>
+
+                    <p>
+                        A personal space for poetry, reflections
+                        and words that stay long after they are read.
+                    </p>
+
+                </div>
+
+                <nav class="home-footer-links" aria-label="Footer navigation">
+                    <a href="/Ink/index.html">Home</a>
+                    <a href="/Ink/MainPages/poem.html">Poems</a>
+                    <a href="/Ink/MainPages/article.html">Articles</a>
+                    <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
+                    <a href="/Ink/MainPages/contact.html">Contact</a>
+                </nav>
+
+            </div>
+
+            <div class="home-footer-bottom">
+
+                <span>
+                    © <span id="homeCurrentYear">2026</span>
+                    Devendra Upadhyay · Independent Ink
+                </span>
+
+                <span class="home-footer-motto">WORDS THAT STAY.</span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!--
+        Homepage menu is self-contained.
+        The dedicated IDs prevent the old #hamburger / #navMenu
+        controller from attaching to this menu.
+        The shared index.js is intentionally not loaded here to
+        avoid duplicate hamburger handlers.
+    -->
+
+    <script>
+        (function () {
+            "use strict";
+
+            const hamburger = document.getElementById("homeHamburger");
+            const navMenu = document.getElementById("homeNavMenu");
+            const currentYear = document.getElementById("homeCurrentYear");
+
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+
+            if (!hamburger || !navMenu) {
+                return;
+            }
+
+            function setMenuState(isOpen) {
+                navMenu.classList.toggle("open", isOpen);
+                hamburger.classList.toggle("is-open", isOpen);
+                hamburger.setAttribute("aria-expanded", String(isOpen));
+                hamburger.setAttribute(
+                    "aria-label",
+                    isOpen ? "Close navigation menu" : "Open navigation menu"
+                );
+            }
+
+            hamburger.addEventListener("click", function () {
+                const isOpen = hamburger.getAttribute("aria-expanded") === "true";
+                setMenuState(!isOpen);
+            });
+
+            navMenu.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    setMenuState(false);
+                });
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" &&
+                    hamburger.getAttribute("aria-expanded") === "true") {
+                    setMenuState(false);
+                    hamburger.focus();
+                }
+            });
+
+            document.addEventListener("click", function (event) {
+                if (
+                    hamburger.getAttribute("aria-expanded") === "true" &&
+                    !navMenu.contains(event.target) &&
+                    !hamburger.contains(event.target)
+                ) {
+                    setMenuState(false);
+                }
+            });
+
+            window.addEventListener("resize", function () {
+                if (window.innerWidth > 720) {
+                    setMenuState(false);
+                }
+            });
+        })();
+    </script>
 
 </body>
-
 </html>

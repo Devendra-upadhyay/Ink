@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101010">
+    <meta name="description" content="Read thoughtful long-form writing on Independent Ink.">
+
+    <title>Article | Independent Ink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/Ink/css/index.css">
+    <link rel="stylesheet" href="/Ink/css/article-reader.css">
+</head>
+
+<body class="article-reader-page">
+
+    <div class="article-progress-track" aria-hidden="true">
+        <div id="articleProgress" class="article-progress-bar"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="/Ink/index.html" class="brand-link" aria-label="Independent Ink home">
+                <span class="logo-circle" aria-hidden="true">I</span>
+                <span class="logo-text">Ink</span>
+            </a>
+        </div>
+
+        <button class="hamburger"
+                id="hamburger"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-controls="navMenu"
+                aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-right" id="navMenu" aria-label="Main navigation">
+            <a href="/Ink/index.html">Home</a>
+            <a href="/Ink/MainPages/poem.html">Poems</a>
+            <a href="/Ink/MainPages/article.html" class="active" aria-current="page">Articles</a>
+            <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
+            <a href="/Ink/MainPages/contact.html">Contact</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- ARTICLE HEADER -->
+        <section class="article-reader-hero">
+
+            <a href="/Ink/MainPages/article.html" class="article-back-link">
+                <span aria-hidden="true">←</span> All articles
+            </a>
+
+            <div class="article-heading-inner">
+
+                <span class="article-reader-category" id="articleCategory">
+                    INDEPENDENT INK
+                </span>
+
+                <h1 id="articleTitle">Loading article...</h1>
+
+                <p class="article-subtitle" id="articleSubtitle"></p>
+
+                <div class="article-reader-meta">
+                    <span>By <strong>Devendra Upadhyay</strong></span>
+                    <span class="meta-dot" aria-hidden="true">◆</span>
+                    <time id="articleDate"></time>
+                    <span class="meta-dot" aria-hidden="true">◆</span>
+                    <span id="readingTime">Reading time</span>
+                </div>
+
+            </div>
+
+            <div class="article-hero-ornament" aria-hidden="true">
+                <span></span>
+                <i>✦</i>
+                <span></span>
+            </div>
+
+        </section>
+
+
+        <!-- ARTICLE TOOLBAR -->
+        <section class="article-toolbar" aria-label="Reading tools">
+
+            <div class="article-toolbar-label">
+                <span aria-hidden="true">✧</span>
+                <span>THE READING ROOM</span>
+            </div>
+
+            <div class="article-toolbar-controls">
+                <span class="toolbar-caption">Text size</span>
+
+                <button type="button" id="fontDecrease"
+                        class="article-tool-button"
+                        aria-label="Decrease article text size">A−</button>
+
+                <button type="button" id="fontIncrease"
+                        class="article-tool-button"
+                        aria-label="Increase article text size">A+</button>
+
+                <button type="button" id="fontReset"
+                        class="article-reset-button">Reset</button>
+
+                <button type="button" id="toggleContents"
+                        class="article-reset-button contents-toggle">
+                    Contents
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- ARTICLE LAYOUT -->
+        <div class="article-reader-layout">
+
+            <!-- Optional table of contents -->
+            <aside class="article-toc" id="articleToc" hidden>
+                <div class="toc-heading">IN THIS ARTICLE</div>
+                <nav id="tocLinks" aria-label="Table of contents"></nav>
+            </aside>
+
+            <!-- Main article -->
+            <article class="article-reading-column">
+
+                <div class="article-introduction" id="articleIntroduction"></div>
+
+                <div class="article-body" id="articleBody">
+                    <p>Loading article content...</p>
+                </div>
+
+                <div class="article-ending-mark" aria-hidden="true">
+                    <span></span>
+                    <i>❧</i>
+                    <span></span>
+                </div>
+
+                <div class="article-author-sign">
+                    <span class="author-sign-line"></span>
+                    <p>Devendra Upadhyay</p>
+                    <span>Independent Ink</span>
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- SHARE -->
+        <section class="article-share-section">
+
+            <span class="article-small-label">SHARE AN IDEA</span>
+            <h2>Let the conversation continue.</h2>
+
+            <p>
+                Share this article with someone who might find it meaningful.
+            </p>
+
+            <div class="article-share-buttons">
+
+                <button type="button" id="copyArticleLink">
+                    <span aria-hidden="true">↗</span>
+                    <span id="copyArticleText">Copy link</span>
+                </button>
+
+                <button type="button" id="whatsappArticle">
+                    WhatsApp
+                </button>
+
+                <button type="button" id="xArticle">
+                    Share on X
+                </button>
+
+                <button type="button" id="nativeArticleShare" hidden>
+                    More options
+                </button>
+
+            </div>
+
+            <p id="articleShareFeedback" role="status" aria-live="polite"></p>
+
+        </section>
+
+
+        <!-- PREVIOUS / NEXT -->
+        <nav class="article-navigation" aria-label="Article navigation">
+
+            <a id="previousArticle" class="article-nav-card" href="/Ink/MainPages/article.html">
+                <span>← PREVIOUS ARTICLE</span>
+                <h3>Back to articles</h3>
+                <p>Explore more ideas and perspectives.</p>
+            </a>
+
+            <a id="nextArticle" class="article-nav-card next-article" href="/Ink/MainPages/article.html">
+                <span>NEXT ARTICLE →</span>
+                <h3>Explore another article</h3>
+                <p>Continue reading Independent Ink.</p>
+            </a>
+
+        </nav>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer article-reader-footer">
+        <a href="/Ink/index.html">Independent Ink</a>
+        <p>Words, ideas and perspectives beyond the surface.</p>
+        <span>© <span id="currentYear">2026</span> Independent Ink · All Rights Reserved</span>
+    </footer>
+
+
+    <script src="/Ink/js/index.js"></script>
+
+    <script>
+    (() => {
+        "use strict";
+
+        /*
+         * ARTICLE CONTENT
+         * Add each article's complete text in its sections array.
+         *
+         * Supported block types:
+         * paragraph, heading, quote, list
+         *
+         * This starter data contains only the summaries from article.html.
+         * Replace or expand it with your original complete article text.
+         */
+
+        const articles = {
+            "article-01": {
+                title: "MP Education Reform: A Need For Change",
+                category: "Education",
+                date: "2026-07-26",
+                subtitle: "Education is about more than marks and examinations. It shapes skills, curiosity and responsible citizens.",
+                introduction: "A strong education system builds the future of society. Understanding its challenges is an important first step towards meaningful change.",
+                sections: [
+                    {
+                        type: "heading",
+                        text: "Why Education Matters",
+                        id: "why-education-matters"
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Education is not only about marks and examinations. It is about creating skills, curiosity and responsible citizens."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Add your complete original discussion about education reform in Madhya Pradesh here. You can divide the article into sections, explain the challenges you want to discuss, and develop your own arguments and recommendations."
+                    }
+                ],
+                previous: null,
+                next: "article-02"
+            },
+
+            "article-02": {
+                title: "Government Accountability In Democracy",
+                category: "Politics",
+                date: "2026-07-26",
+                subtitle: "Democracy depends on more than elections. It also depends on transparency, questions and accountability.",
+                introduction: "The relationship between citizens and government does not end when an election is over. Accountability remains an essential part of democratic life.",
+                sections: [
+                    {
+                        type: "heading",
+                        text: "Beyond Elections",
+                        id: "beyond-elections"
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Democracy is not only about elections. It is also about questions, transparency and accountability between citizens and the government."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Add your complete original discussion about democratic accountability here. You can organise your views into sections and include examples, arguments and conclusions that reflect your own research."
+                    }
+                ],
+                previous: "article-01",
+                next: "article-03"
+            },
+
+            "article-03": {
+                title: "Technology And The Future Of India",
+                category: "Technology",
+                date: "2026-07-26",
+                subtitle: "How technology is changing the way people learn, work and communicate.",
+                introduction: "The future belongs to people who understand technology and use it responsibly. Its impact deserves thoughtful discussion.",
+                sections: [
+                    {
+                        type: "heading",
+                        text: "Technology and Change",
+                        id: "technology-and-change"
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Technology is changing the way people learn, work and communicate. The future belongs to those who understand technology and use it responsibly."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Add your complete original discussion about technology and India's future here. Consider the specific opportunities, challenges and conclusions you want readers to take away."
+                    }
+                ],
+                previous: "article-02",
+                next: null
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const articleId = params.get("id") || "article-01";
+        const article = articles[articleId];
+
+        const titleElement = document.getElementById("articleTitle");
+        const categoryElement = document.getElementById("articleCategory");
+        const subtitleElement = document.getElementById("articleSubtitle");
+        const dateElement = document.getElementById("articleDate");
+        const timeElement = document.getElementById("readingTime");
+        const introductionElement = document.getElementById("articleIntroduction");
+        const bodyElement = document.getElementById("articleBody");
+        const tocElement = document.getElementById("articleToc");
+        const tocLinks = document.getElementById("tocLinks");
+
+        const progressBar = document.getElementById("articleProgress");
+
+        const decreaseButton = document.getElementById("fontDecrease");
+        const increaseButton = document.getElementById("fontIncrease");
+        const resetButton = document.getElementById("fontReset");
+        const contentsButton = document.getElementById("toggleContents");
+
+        const copyButton = document.getElementById("copyArticleLink");
+        const copyText = document.getElementById("copyArticleText");
+        const whatsappButton = document.getElementById("whatsappArticle");
+        const xButton = document.getElementById("xArticle");
+        const nativeShareButton = document.getElementById("nativeArticleShare");
+        const feedback = document.getElementById("articleShareFeedback");
+
+        const previousLink = document.getElementById("previousArticle");
+        const nextLink = document.getElementById("nextArticle");
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        if (!article) {
+            document.title = "Article Not Found | Independent Ink";
+            titleElement.textContent = "Article not found";
+            categoryElement.textContent = "INDEPENDENT INK";
+            subtitleElement.textContent =
+                "The requested article could not be found.";
+            dateElement.textContent = "";
+            timeElement.textContent = "";
+            introductionElement.hidden = true;
+            bodyElement.replaceChildren();
+
+            const message = document.createElement("p");
+            message.textContent =
+                "Please return to the article collection and choose an article.";
+            bodyElement.appendChild(message);
+
+            previousLink.href = "/Ink/MainPages/article.html";
+            nextLink.hidden = true;
+            document.querySelector(".article-reader-layout").style.display = "block";
+            document.querySelector(".article-toolbar").hidden = true;
+            document.querySelector(".article-share-section").hidden = true;
+            document.querySelector(".article-navigation").style.display = "block";
+            return;
+        }
+
+        document.title = article.title + " | Independent Ink";
+        document.querySelector('meta[name="description"]').content =
+            article.subtitle;
+
+        titleElement.textContent = article.title;
+        categoryElement.textContent = article.category.toUpperCase();
+        subtitleElement.textContent = article.subtitle;
+
+        const date = new Date(article.date + "T12:00:00");
+        dateElement.dateTime = article.date;
+        dateElement.textContent = date.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+        introductionElement.textContent = article.introduction;
+
+        /*
+         * Build article sections using DOM elements and textContent.
+         * This avoids interpreting article text as HTML.
+         */
+        const tocItems = [];
+
+        article.sections.forEach((section, index) => {
+            let element;
+
+            if (section.type === "heading") {
+                element = document.createElement("h2");
+                element.textContent = section.text;
+                element.id = section.id || "section-" + (index + 1);
+                tocItems.push({
+                    id: element.id,
+                    text: section.text
+                });
+            } else if (section.type === "quote") {
+                element = document.createElement("blockquote");
+                element.textContent = section.text;
+            } else if (section.type === "list") {
+                element = document.createElement("ul");
+
+                section.items.forEach(itemText => {
+                    const item = document.createElement("li");
+                    item.textContent = itemText;
+                    element.appendChild(item);
+                });
+            } else {
+                element = document.createElement("p");
+                element.textContent = section.text;
+            }
+
+            bodyElement.appendChild(element);
+        });
+
+        tocItems.forEach(item => {
+            const link = document.createElement("a");
+            link.href = "#" + item.id;
+            link.textContent = item.text;
+            tocLinks.appendChild(link);
+        });
+
+        tocElement.hidden = tocItems.length === 0;
+        contentsButton.hidden = tocItems.length === 0;
+
+        const fullText = [
+            article.title,
+            article.subtitle,
+            article.introduction,
+            ...article.sections.map(section =>
+                section.type === "list"
+                    ? section.items.join(" ")
+                    : section.text
+            )
+        ].join(" ");
+
+        const wordCount = fullText.trim().split(/\s+/).filter(Boolean).length;
+        const estimatedMinutes = Math.max(1, Math.ceil(wordCount / 200));
+        timeElement.textContent = estimatedMinutes + " min read";
+
+        function configureArticleLink(element, targetId, fallbackText) {
+            if (!targetId || !articles[targetId]) {
+                element.href = "/Ink/MainPages/article.html";
+                element.innerHTML = "";
+                const label = document.createElement("span");
+                label.textContent = fallbackText;
+                element.appendChild(label);
+                const heading = document.createElement("h3");
+                heading.textContent = "Explore all articles";
+                element.appendChild(heading);
+                const description = document.createElement("p");
+                description.textContent = "Return to the Independent Ink collection.";
+                element.appendChild(description);
+                return;
+            }
+
+            const target = articles[targetId];
+            element.href =
+                "/Ink/MainPages/article-reader.html?id=" +
+                encodeURIComponent(targetId);
+
+            const heading = element.querySelector("h3");
+            if (heading) heading.textContent = target.title;
+        }
+
+        configureArticleLink(
+            previousLink,
+            article.previous,
+            "← PREVIOUS ARTICLE"
+        );
+
+        configureArticleLink(
+            nextLink,
+            article.next,
+            "NEXT ARTICLE →"
+        );
+
+        /* Reading controls */
+        let fontSize = 1.08;
+        const minFontSize = 0.9;
+        const maxFontSize = 1.45;
+        const step = 0.05;
+
+        function updateFontSize() {
+            bodyElement.style.setProperty(
+                "--article-font-size",
+                fontSize.toFixed(2) + "rem"
+            );
+
+            decreaseButton.disabled = fontSize <= minFontSize;
+            increaseButton.disabled = fontSize >= maxFontSize;
+        }
+
+        decreaseButton.addEventListener("click", () => {
+            fontSize = Math.max(
+                minFontSize,
+                Math.round((fontSize - step) * 100) / 100
+            );
+            updateFontSize();
+        });
+
+        increaseButton.addEventListener("click", () => {
+            fontSize = Math.min(
+                maxFontSize,
+                Math.round((fontSize + step) * 100) / 100
+            );
+            updateFontSize();
+        });
+
+        resetButton.addEventListener("click", () => {
+            fontSize = 1.08;
+            updateFontSize();
+        });
+
+        contentsButton.addEventListener("click", () => {
+            tocElement.hidden = !tocElement.hidden;
+            contentsButton.setAttribute(
+                "aria-expanded",
+                String(!tocElement.hidden)
+            );
+        });
+
+        tocLinks.addEventListener("click", event => {
+            if (event.target.closest("a")) {
+                tocElement.hidden = true;
+                contentsButton.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        function updateProgress() {
+            const height =
+                document.documentElement.scrollHeight - window.innerHeight;
+
+            const percentage = height > 0
+                ? (window.scrollY / height) * 100
+                : 0;
+
+            progressBar.style.width =
+                Math.min(100, Math.max(0, percentage)) + "%";
+        }
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        updateFontSize();
+        updateProgress();
+
+        /* Share controls */
+        function shareData() {
+            return {
+                title: article.title + " | Independent Ink",
+                text: article.title + " — by Devendra Upadhyay",
+                url: window.location.href
+            };
+        }
+
+        function showFeedback(message) {
+            feedback.textContent = message;
+        }
+
+        copyButton.addEventListener("click", async () => {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(window.location.href);
+                } else {
+                    const input = document.createElement("textarea");
+                    input.value = window.location.href;
+                    input.setAttribute("readonly", "");
+                    input.style.position = "fixed";
+                    input.style.opacity = "0";
+                    document.body.appendChild(input);
+                    input.select();
+
+                    const success = document.execCommand("copy");
+                    input.remove();
+
+                    if (!success) throw new Error("Copy failed");
+                }
+
+                copyText.textContent = "Copied ✓";
+                showFeedback("Article link copied successfully.");
+
+                window.setTimeout(() => {
+                    copyText.textContent = "Copy link";
+                }, 2200);
+            } catch (error) {
+                showFeedback("Copy unavailable. Please copy the URL from your browser.");
+            }
+        });
+
+        whatsappButton.addEventListener("click", () => {
+            const data = shareData();
+            const message = data.text + "\n" + data.url;
+
+            window.open(
+                "https://wa.me/?text=" + encodeURIComponent(message),
+                "_blank",
+                "noopener,noreferrer"
+            );
+        });
+
+        xButton.addEventListener("click", () => {
+            const data = shareData();
+            const url =
+                "https://twitter.com/intent/tweet?text=" +
+                encodeURIComponent(data.text) +
+                "&url=" + encodeURIComponent(data.url);
+
+            window.open(url, "_blank", "noopener,noreferrer");
+        });
+
+        if (navigator.share) {
+            nativeShareButton.hidden = false;
+
+            nativeShareButton.addEventListener("click", async () => {
+                try {
+                    await navigator.share(shareData());
+                    showFeedback("Thanks for sharing this article.");
+                } catch (error) {
+                    if (error.name !== "AbortError") {
+                        showFeedback("Sharing could not be completed.");
+                    }
+                }
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>

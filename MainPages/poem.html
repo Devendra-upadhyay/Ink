@@ -1,364 +1,673 @@
+
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poems | Independent Ink</title>
+  <meta name="description" content="Explore poems, shayari and creative writing at Independent Ink.">
 
-  <title>Poems | Ink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-  <!-- Main CSS -->
   <link rel="stylesheet" href="/Ink/css/index.css">
 
-</head>
+  <style>
+    /* POEM SEARCH */
+    .poem-search-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 40px auto 30px;
+      padding: 0 20px;
+    }
 
+    .poem-search-wrap {
+      position: relative;
+      width: 60%;
+      max-width: 600px;
+    }
+
+    #poemSearch {
+      width: 100%;
+      padding: 14px 46px 14px 22px;
+      background: transparent;
+      border: 1px solid #c9a24d;
+      border-radius: 30px;
+      color: #e9e5dd;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    #poemSearch::placeholder {
+      color: rgba(201, 162, 77, 0.7);
+    }
+
+    #poemSearch:focus {
+      box-shadow: 0 0 15px rgba(201, 162, 77, 0.35);
+      background: rgba(201, 162, 77, 0.04);
+    }
+
+    .clear-search {
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      transform: translateY(-50%);
+      display: none;
+      border: 0;
+      background: transparent;
+      color: #c9a24d;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .clear-search.visible {
+      display: block;
+    }
+
+    /* COLLECTION HEADING */
+    .collection-heading {
+      width: 85%;
+      max-width: 1000px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .collection-heading h2 {
+      margin: 0;
+      color: #c9a24d;
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      font-weight: 500;
+    }
+
+    .collection-heading p {
+      margin: 4px 0 0;
+      color: #b8b8b8;
+      font-size: 14px;
+    }
+
+    .poem-count {
+      color: #b8b8b8;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* POEM CARDS — ARTICLE PAGE STYLE */
+    .poem-list {
+      width: 85%;
+      max-width: 1000px;
+      margin: 40px auto 80px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .poem-card {
+      min-width: 0;
+    }
+
+    .poem-category {
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 14px;
+      padding: 4px 12px;
+      border: 1px solid rgba(201, 162, 77, 0.45);
+      border-radius: 20px;
+      color: #dfbd76;
+      font-size: 11px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .poem-card .article-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+
+    .poem-card .article-no {
+      flex-shrink: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #c9a24d;
+    }
+
+    .poem-card .article-header h2 {
+      margin: 0;
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 26px;
+      line-height: 1.55;
+      color: #e5e5e5;
+      overflow-wrap: anywhere;
+    }
+
+    .poem-card .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      margin: 0 0 18px;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .poem-card .poem-author {
+      color: #c9a24d;
+    }
+
+    .poem-card .poem-excerpt {
+      margin-bottom: 25px;
+      color: #ddd;
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 16px;
+      line-height: 1.9;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+    }
+
+    .poem-card .read-btn {
+      text-align: left;
+      margin-top: auto;
+    }
+
+    .poem-card .read-btn a {
+      display: inline-block;
+      color: #c9a24d;
+      text-decoration: none;
+      border: 1px solid #c9a24d;
+      padding: 10px 22px;
+      border-radius: 25px;
+      transition: 0.3s ease;
+    }
+
+    .poem-card .read-btn a:hover {
+      background: #c9a24d;
+      color: #000;
+    }
+
+    .poem-card.hidden {
+      display: none !important;
+    }
+
+    /* EMPTY SEARCH RESULT */
+    .empty-state {
+      display: none;
+      width: 85%;
+      max-width: 1000px;
+      margin: 0 auto 70px;
+      padding: 36px 22px;
+      border: 1px dashed rgba(201, 162, 77, 0.4);
+      text-align: center;
+      color: #b8b8b8;
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    .empty-state .empty-symbol {
+      color: #c9a24d;
+      font-size: 25px;
+    }
+
+    .empty-state h3 {
+      margin: 8px 0;
+      color: #e9e5dd;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+
+    .loading-message {
+      margin: 0 auto 24px;
+      color: #c9a24d;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .poem-search-wrap {
+        width: 85%;
+      }
+
+      .collection-heading,
+      .poem-list,
+      .empty-state {
+        width: 90%;
+      }
+
+      .collection-heading h2 {
+        font-size: 23px;
+      }
+
+      .poem-card .article-header {
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .poem-card .article-header h2 {
+        font-size: 22px;
+      }
+
+      .poem-list {
+        padding: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .poem-search-section {
+        margin-top: 28px;
+      }
+
+      .poem-search-wrap {
+        width: 100%;
+      }
+
+      #poemSearch {
+        font-size: 14px;
+        padding-left: 16px;
+      }
+
+      .collection-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .poem-card .article-header h2 {
+        font-size: 20px;
+      }
+
+      .poem-card .poem-excerpt {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
 
 <body>
 
-
-<!-- ================= NAVBAR ================= -->
-
-<header class="navbar">
-
-  <div class="nav-left">
-
-    <div class="logo-circle">I</div>
-
-    <a href="/ink/index.html">
-      <span class="logo-text">Ink</span>
-    </a>
-
-  </div>
-
-
-  <!-- Hamburger -->
-
-  <div class="hamburger" id="hamburger">
-
-    <span></span>
-    <span></span>
-    <span></span>
-
-  </div>
-
-
-
-  <!-- Navigation -->
-
-  <nav class="nav-right" id="navMenu">
-
-    <a href="/Ink/index.html">Home</a>
-
-    <a href="poem.html" class="active">Poems</a>
-
-    <a href="/Ink/MainPages/article.html">Article</a>
-
-    <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
-
-    <a href="/Ink/MainPages/contact.html">Contact</a>
-
-  </nav>
-
-
-</header>
-
-
-
-<!-- ================= PAGE TITLE ================= -->
-
-<section class="page-title">
-
-  <h1>Poems</h1>
-
-  <p>
-    A collection of emotions written in words
-  </p>
-
-  <div class="divider"></div>
-
-</section>
-
-
-
-
-<!-- ================= SEARCH ================= -->
-
-<section class="poem-search-section">
-
-  <input
-    type="text"
-    id="poemSearch"
-    placeholder="कविता खोजें..."
-    onkeyup="searchPoemsByName()"
-  />
-
-</section>
-
-
-
-
-<!-- ================= FILTER ================= -->
-
-<section class="filters">
-
-  <button class="active" onclick="filterPoems('all')">
-    All
-  </button>
-
-  <button onclick="filterPoems('shayari')">
-    Shayari
-  </button>
-
-  <button onclick="filterPoems('poem')">
-    Poems
-  </button>
-
-  <button onclick="filterPoems('song')">
-    Songs
-  </button>
-
-</section>
-
-
-
-
-
-<!-- ================= POEMS LIST ================= -->
-
-<main class="poem-list" id="poems-container">
-
-
-<!-- Manual Poem 01 -->
-
-<article class="poem-card poem" data-title="Sawalon se bhare man ko">
-
-  <div class="poem-header">
-
-    <span class="poem-no">
-      01
-    </span>
-
-    <h2>
-      सवालों से भरे मन को ..
-    </h2>
-
-  </div>
-
-
-  <span class="date">
-    प्रकाशित : 12 जनवरी 2026
-  </span>
-
-
-  <p>
-    सवालों से भरे मन को,<br>
-    भला रोकोगे तुम कैसे...
-  </p>
-
-
-  <div class="read-btn">
-
-    <a href="/Ink/Poem-Collection/poem-01.html">
-      Read Full Poem →
-    </a>
-
-  </div>
-
-
-</article>
-
-
-
-
-
-<!-- Manual Poem 02 -->
-
-<article class="poem-card shayari" data-title="Main Laut Jana Chahta Hoon">
-
-
-  <div class="poem-header">
-
-    <span class="poem-no">
-      02
-    </span>
-
-    <h2>
-      मैं लौट जाना चाहता हूं |
-    </h2>
-
-
-  </div>
-
-
-
-  <span class="date">
-    प्रकाशित : 02 फरवरी 2026
-  </span>
-
-
-
-  <p>
-    मैं लौट जाना चाहता हूं,<br>
-    उम्र के उस पड़ाव में..
-  </p>
-
-
-
-  <div class="read-btn">
-
-    <a href="/Ink/Poem-Collection/poem-01.html">
-      Read Full Poem →
-    </a>
-
-  </div>
-
-
-</article>
-
-
-
-</main>
-
-
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
- Devendra Upadhyay | © 2026 Ink | All Rights Reserved
-
-</footer>
-
-
-
-
-
-<!-- ================= GOOGLE SHEET FETCH ================= -->
-
-<script>
-
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSFX2ZnW9YR_E2dJSXdjQ5PIESCAi0eS6p_ifMUAduAS0ytDoiSYxTdIUIeWRnB89J4KGhgMlbCB45R/pub?output=csv")
-
-.then(response => response.text())
-
-.then(data => {
-
-
-  const rows = data.split("\n").slice(1);
-
-  let output = "";
-
-  let count = 2;
-
-
-
-  rows.reverse().forEach(row => {
-
-
-    if(!row.trim()) return;
-
-
-
-    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-
-
-
-    const title = columns[1]?.replace(/\r/g,"").trim();
-
-    const content = columns[2]?.replace(/\r/g,"").trim();
-
-    const author = columns[3]?.replace(/\r/g,"").trim();
-
-    const date = columns[4]?.replace(/\r/g,"").trim();
-
-
-
-    if(title && content){
-
-
-      count++;
-
-
-      output += `
-
-      <article class="poem-card poem" data-title="${title.toLowerCase()}">
-
-
-        <div class="poem-header">
-
-          <span class="poem-no">
-            ${count.toString().padStart(2,'0')}
-          </span>
-
-
-          <h2>
-            ${title}
-          </h2>
-
-
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo-circle">I</div>
+      <a href="/Ink/index.html">
+        <span class="logo-text">Ink</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" type="button"
+      aria-label="Open navigation menu"
+      aria-controls="navMenu"
+      aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-right" id="navMenu" aria-label="Main navigation">
+      <a href="/Ink/index.html">Home</a>
+      <a href="/Ink/MainPages/poem.html" class="active">Poems</a>
+      <a href="/Ink/MainPages/article.html">Articles</a>
+      <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
+      <a href="/Ink/MainPages/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <section class="page-title">
+    <h1>Poems</h1>
+    <p>कुछ भावनाएँ शब्दों में ढल जाती हैं, कुछ कहानियाँ कविताओं में जी उठती हैं।</p>
+    <div class="divider"></div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="poem-search-section" aria-label="Search poems">
+    <div class="poem-search-wrap">
+      <input
+        type="search"
+        id="poemSearch"
+        placeholder="Search poems or shayari..."
+        aria-label="Search poems by title or content"
+        autocomplete="off">
+
+      <button type="button" id="clearSearch"
+        class="clear-search" aria-label="Clear search">×</button>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTERS -->
+  <section class="filters" aria-label="Filter poems by category">
+    <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="shayari" aria-pressed="false">Shayari</button>
+    <button type="button" data-filter="poem" aria-pressed="false">Poems</button>
+    <button type="button" data-filter="song" aria-pressed="false">Songs</button>
+  </section>
+
+  <main>
+    <section class="collection-section">
+
+      <div class="collection-heading">
+        <div>
+          <h2>The Collection</h2>
+          <p>Every piece has a story to tell.</p>
         </div>
+        <span class="poem-count" id="poemCount" aria-live="polite">2 entries</span>
+      </div>
 
+      <div class="article-list poem-list" id="poems-container">
 
+        <!-- MANUALLY ADDED POEM 01 -->
+        <article class="article-card poem-card poem"
+          data-category="poem"
+          data-title="सवालों से भरे मन को sawalon se bhare man ko">
 
-        <span class="date">
-          प्रकाशित : ${date}
-        </span>
+          <span class="poem-category">Poem</span>
 
+          <div class="article-header">
+            <span class="article-no">01</span>
+            <h2>सवालों से भरे मन को...</h2>
+          </div>
 
-        <br>
+          <div class="article-meta">
+            <span>प्रकाशित : 12 जनवरी 2026</span>
+            <span class="poem-author">✍ Devendra Upadhyay</span>
+          </div>
 
+          <p class="poem-excerpt">सवालों से भरे मन को,
+भला रोकोगे तुम कैसे...</p>
 
-        <span class="author">
-          ✍ ${author}
-        </span>
+          <div class="read-btn">
+            <a href="/Ink/Poem-Collection/poem-01.html">Read Full Poem →</a>
+          </div>
+        </article>
 
+        <!-- MANUALLY ADDED POEM 02 -->
+        <article class="article-card poem-card shayari"
+          data-category="shayari"
+          data-title="मैं लौट जाना चाहता हूं main laut jana chahta hoon">
 
+          <span class="poem-category">Shayari</span>
 
-        <p class="poem-content">
-          ${content}
-        </p>
+          <div class="article-header">
+            <span class="article-no">02</span>
+            <h2>मैं लौट जाना चाहता हूं...</h2>
+          </div>
 
+          <div class="article-meta">
+            <span>प्रकाशित : 02 फरवरी 2026</span>
+            <span class="poem-author">✍ Devendra Upadhyay</span>
+          </div>
 
+          <p class="poem-excerpt">मैं लौट जाना चाहता हूं,
+उम्र के उस पड़ाव में...</p>
 
-      </article>
+          <div class="read-btn">
+            <a href="/Ink/Poem-Collection/poem-02.html">Read Full Poem →</a>
+          </div>
+        </article>
 
+      </div>
 
-      `;
+      <p class="loading-message" id="sheetLoading" hidden>
+        Loading more writing...
+      </p>
 
-    }
+      <div class="empty-state" id="emptyState">
+        <span class="empty-symbol" aria-hidden="true">✦</span>
+        <h3>No words found.</h3>
+        <p>इस खोज से जुड़ी कोई रचना नहीं मिली। कोई दूसरा शीर्षक खोजें।</p>
+      </div>
 
+    </section>
+  </main>
 
-  });
+  <!-- FOOTER -->
+  <footer class="footer">
+    Devendra Upadhyay | © 2026 Independent Ink | All Rights Reserved
+  </footer>
 
+  <!-- SHARED JAVASCRIPT -->
+  <script src="/Ink/js/index.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("poemSearch");
+      const clearSearch = document.getElementById("clearSearch");
+      const filterButtons = document.querySelectorAll(".filters button[data-filter]");
+      const poemsContainer = document.getElementById("poems-container");
+      const poemCount = document.getElementById("poemCount");
+      const emptyState = document.getElementById("emptyState");
+      const loadingMessage = document.getElementById("sheetLoading");
 
-  document.getElementById("poems-container").innerHTML += output;
+      let activeFilter = "all";
 
+      function applyFilters() {
+        const query = searchInput.value.trim().toLocaleLowerCase();
+        const cards = poemsContainer.querySelectorAll(".poem-card");
+        let visibleCount = 0;
 
-})
+        cards.forEach(function (card) {
+          const title = (card.dataset.title || "").toLocaleLowerCase();
+          const text = (card.textContent || "").toLocaleLowerCase();
+          const category = (card.dataset.category || "poem").toLowerCase();
 
+          const matchesSearch =
+            !query || title.includes(query) || text.includes(query);
 
-.catch(error => {
+          const matchesCategory =
+            activeFilter === "all" || category === activeFilter;
 
-console.log("Error loading poems:", error);
+          const isVisible = matchesSearch && matchesCategory;
 
-});
+          card.classList.toggle("hidden", !isVisible);
 
+          if (isVisible) {
+            visibleCount++;
+          }
+        });
 
-</script>
+        poemCount.textContent =
+          visibleCount + (visibleCount === 1 ? " entry" : " entries");
 
+        emptyState.classList.toggle("visible", visibleCount === 0);
+        clearSearch.classList.toggle("visible", searchInput.value.length > 0);
+      }
 
+      searchInput.addEventListener("input", applyFilters);
 
+      clearSearch.addEventListener("click", function () {
+        searchInput.value = "";
+        applyFilters();
+        searchInput.focus();
+      });
 
-<script src="/Ink/js/index.js"></script>
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          activeFilter = button.dataset.filter;
 
+          filterButtons.forEach(function (item) {
+            const selected = item === button;
+            item.classList.toggle("active", selected);
+            item.setAttribute("aria-pressed", String(selected));
+          });
 
+          applyFilters();
+        });
+      });
+
+      /* Google Sheets CSV loader.
+         Expected columns: A unused, B title, C content, D author, E date. */
+
+      const sheetURL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSFX2ZnW9YR_E2dJSXdjQ5PIESCAi0eS6p_ifMUAduAS0ytDoiSYxTdIUIeWRnB89J4KGhgMlbCB45R/pub?output=csv";
+
+      function parseCSV(csv) {
+        const rows = [];
+        let row = [];
+        let cell = "";
+        let inQuotes = false;
+
+        for (let i = 0; i < csv.length; i++) {
+          const char = csv[i];
+          const next = csv[i + 1];
+
+          if (char === '"' && inQuotes && next === '"') {
+            cell += '"';
+            i++;
+          } else if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === "," && !inQuotes) {
+            row.push(cell);
+            cell = "";
+          } else if (
+            (char === "\n" || char === "\r") &&
+            !inQuotes
+          ) {
+            if (char === "\r" && next === "\n") {
+              i++;
+            }
+
+            row.push(cell);
+
+            if (row.some(function (value) {
+              return value.trim() !== "";
+            })) {
+              rows.push(row);
+            }
+
+            row = [];
+            cell = "";
+          } else {
+            cell += char;
+          }
+        }
+
+        row.push(cell);
+
+        if (row.some(function (value) {
+          return value.trim() !== "";
+        })) {
+          rows.push(row);
+        }
+
+        return rows;
+      }
+
+      function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+
+        if (className) {
+          element.className = className;
+        }
+
+        if (text !== undefined) {
+          element.textContent = text;
+        }
+
+        return element;
+      }
+
+      function createSheetPoem(title, content, author, date, number) {
+        const card = createElement("article", "article-card poem-card poem");
+
+        card.dataset.category = "poem";
+        card.dataset.title = title;
+
+        card.appendChild(createElement("span", "poem-category", "Poem"));
+
+        const header = createElement("div", "article-header");
+        header.appendChild(
+          createElement("span", "article-no", String(number).padStart(2, "0"))
+        );
+        header.appendChild(createElement("h2", "", title));
+        card.appendChild(header);
+
+        const meta = createElement("div", "article-meta");
+
+        meta.appendChild(
+          createElement(
+            "span",
+            "",
+            date ? "प्रकाशित : " + date : "Independent Ink"
+          )
+        );
+
+        if (author) {
+          meta.appendChild(
+            createElement("span", "poem-author", "✍ " + author)
+          );
+        }
+
+        card.appendChild(meta);
+        card.appendChild(createElement("p", "poem-excerpt", content));
+
+        /* The current sheet has no URL column, so no reading link is invented. */
+        const footer = createElement("div", "read-btn");
+        footer.appendChild(
+          createElement("span", "poem-category", "Hindi Literature")
+        );
+        card.appendChild(footer);
+
+        return card;
+      }
+
+      async function loadSheetPoems() {
+        loadingMessage.hidden = false;
+
+        try {
+          const response = await fetch(sheetURL);
+
+          if (!response.ok) {
+            throw new Error("Unable to load the published spreadsheet.");
+          }
+
+          const rows = parseCSV(await response.text());
+
+          if (rows.length < 2) {
+            return;
+          }
+
+          const dataRows = rows.slice(1).reverse();
+          let number = 2;
+
+          dataRows.forEach(function (row) {
+            const title = (row[1] || "").trim();
+            const content = (row[2] || "").trim();
+            const author = (row[3] || "").trim();
+            const date = (row[4] || "").trim();
+
+            if (!title || !content) {
+              return;
+            }
+
+            number++;
+
+            poemsContainer.appendChild(
+              createSheetPoem(title, content, author, date, number)
+            );
+          });
+
+        } catch (error) {
+          console.error("Error loading poems from Google Sheets:", error);
+          /* Manually added poems remain available if the sheet cannot load. */
+        } finally {
+          loadingMessage.hidden = true;
+          applyFilters();
+        }
+      }
+
+      applyFilters();
+      loadSheetPoems();
+    });
+  </script>
 
 </body>
-
 </html>

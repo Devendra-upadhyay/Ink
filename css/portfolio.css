@@ -1,323 +1,743 @@
-/* ================================
-   ABOUT PORTFOLIO PAGE
-================================ */
 
-/* Portfolio Container */
+/* =====================================================
+   INDEPENDENT INK — PORTFOLIO PAGE
+   Editorial | Dark | Antique Gold
+   Uses existing portfolio.html and portfolio.js
+===================================================== */
 
-.portfolio-container{
-    width:90%;
-    max-width:900px;
-    margin:auto;
+
+/* =====================================================
+   PORTFOLIO CONTAINER
+===================================================== */
+
+.portfolio-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* ===============================
-   PROFILE SECTION
-================================ */
 
-.profile-card{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+/* =====================================================
+   PAGE TITLE
+===================================================== */
 
-    gap:60px;
-
-    padding:50px;
-
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:18px;
-
-    backdrop-filter:blur(5px);
+.page-title {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 20px 45px;
+    text-align: center;
 }
 
-.profile-left,
-.profile-right{
-    flex:1;
-    display:flex;
-    align-items:center;
+.page-title h1 {
+    margin: 0 0 15px;
+
+    color: var(--ink-gold-light, #dfbd76);
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.2;
 }
 
-.profile-left{
-    justify-content:flex-end;
+.page-title p {
+    margin: 0;
+
+    color: var(--ink-muted, #a29d93);
+
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 14px;
+    line-height: 1.9;
 }
 
-.profile-right{
-    justify-content:flex-start;
-}
+.page-title .divider {
+    width: 70px;
+    height: 1px;
 
-.profile-divider{
-    width:2px;
-    height:260px;
+    margin: 28px auto 0;
 
-    background:linear-gradient(
-        to bottom,
+    background: linear-gradient(
+        90deg,
         transparent,
-        rgba(255,255,255,.65),
+        var(--ink-gold, #c9a24d),
         transparent
     );
 }
 
-.author-image{
-    width:250px;
-    height:250px;
 
-    border-radius:0%;
-    object-fit:cover;
+/* =====================================================
+   PROFILE SECTION
+===================================================== */
+
+.about {
+    width: 100%;
+    margin: 0 auto 80px;
 }
 
-.profile-right h2{
-    margin:0;
+.profile-card {
+    position: relative;
 
-    font-family:'Playfair Display', serif;
-    font-size:46px;
-    font-weight:600;
-    letter-spacing:1px;
-    line-height:1.2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+    align-items: center;
+
+    gap: 45px;
+
+    padding: 45px 55px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(201, 162, 77, 0.055),
+            rgba(255, 255, 255, 0.015) 55%,
+            rgba(201, 162, 77, 0.025)
+        );
+
+    border: 1px solid var(--ink-border, rgba(201, 162, 77, 0.23));
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
 }
 
-/* ===============================
+.profile-card:hover {
+    border-color: rgba(201, 162, 77, 0.45);
+}
+
+.profile-left,
+.profile-right {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+}
+
+.profile-left {
+    justify-content: flex-end;
+}
+
+.profile-right {
+    justify-content: flex-start;
+}
+
+.about-image {
+    position: relative;
+
+    width: 260px;
+    height: 300px;
+
+    padding: 7px;
+
+    border: 1px solid rgba(201, 162, 77, 0.45);
+    background: rgba(201, 162, 77, 0.035);
+}
+
+.author-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter: grayscale(12%);
+    transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
+}
+
+.profile-card:hover .author-image {
+    filter: grayscale(0%);
+}
+
+.profile-divider {
+    width: 1px;
+    height: 180px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(201, 162, 77, 0.65),
+        transparent
+    );
+}
+
+.profile-right h2 {
+    margin: 0;
+
+    color: var(--ink-text, #e9e5dd);
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+
+/* =====================================================
    PORTFOLIO SECTIONS
-================================ */
+===================================================== */
 
-.portfolio-section{
-    width:90%;
-    max-width:1000px;
-    margin:50px auto;
+.portfolio-section {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 75px auto;
 }
 
 .portfolio-box,
-.info-card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.12);
+.info-card {
+    position: relative;
 
-    padding:30px;
+    padding: 30px;
 
-    border-radius:12px;
+    background: rgba(255, 255, 255, 0.025);
 
-    transition:.3s ease;
+    border: 1px solid var(--ink-border, rgba(201, 162, 77, 0.23));
+    border-radius: 5px;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
 }
 
 .portfolio-box:hover,
-.info-card:hover{
-    transform:translateY(-5px);
+.info-card:hover {
+    background: rgba(201, 162, 77, 0.035);
+    border-color: rgba(201, 162, 77, 0.42);
+
+    transform: translateY(-3px);
 }
+
+
+/* =====================================================
+   SECTION HEADINGS
+===================================================== */
 
 .portfolio-box h2,
-.section-heading{
-    font-family:'Playfair Display', serif;
-    font-size:30px;
-    text-align:center;
-    color:goldenrod;
-    margin-bottom:25px;
+.section-heading {
+    position: relative;
+
+    color: var(--ink-gold-light, #dfbd76);
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 1.4;
+
+    text-align: center;
 }
 
-.section-heading{
-    margin-bottom:30px;
+.portfolio-box h2 {
+    margin: 0 0 25px;
 }
+
+.section-heading {
+    margin: 0 0 35px;
+}
+
+.section-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin: 16px auto 0;
+
+    background: var(--ink-gold, #c9a24d);
+}
+
+
+/* =====================================================
+   BODY TEXT
+===================================================== */
 
 .portfolio-box p,
-.info-card p{
-    line-height:1.9;
-    font-family:'Libre Baskerville', serif;
+.info-card p {
+    color: #c7c0b4;
+
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 13px;
+    line-height: 2;
 }
 
-/* ===============================
-   GRID
-================================ */
-
-.card-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
+.portfolio-box p {
+    margin: 0;
 }
 
-.info-card h3{
-    font-family:'Playfair Display', serif;
-    font-size:22px;
-    margin-bottom:15px;
+.info-card p {
+    margin: 0 0 14px;
 }
 
-/* ===============================
+.info-card p:last-child {
+    margin-bottom: 0;
+}
+
+.info-card strong {
+    color: var(--ink-gold-light, #dfbd76);
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CARD GRID
+===================================================== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.info-card h3 {
+    margin: 0 0 15px;
+
+    color: var(--ink-text, #e9e5dd);
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.info-card h3::first-letter {
+    color: inherit;
+}
+
+
+/* =====================================================
+   EDUCATION CARDS
+===================================================== */
+
+.education-card {
+    cursor: pointer;
+
+    padding: 25px 28px;
+
+    background: rgba(255, 255, 255, 0.02);
+
+    border: 1px solid var(--ink-border, rgba(201, 162, 77, 0.23));
+    border-radius: 5px;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.education-card:hover,
+.education-card.active {
+    background: rgba(201, 162, 77, 0.035);
+    border-color: rgba(201, 162, 77, 0.5);
+}
+
+.education-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.education-header h3 {
+    margin: 0;
+
+    color: var(--ink-text, #e9e5dd);
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.education-arrow {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    color: var(--ink-gold-light, #dfbd76);
+
+    border: 1px solid var(--ink-border, rgba(201, 162, 77, 0.23));
+    border-radius: 50%;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.35s ease,
+        background 0.3s ease;
+}
+
+.education-card.active .education-arrow {
+    transform: rotate(180deg);
+
+    background: rgba(201, 162, 77, 0.1);
+}
+
+.education-content {
+    max-height: 0;
+
+    overflow: hidden;
+
+    margin-top: 0;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.45s ease,
+        margin-top 0.35s ease,
+        opacity 0.3s ease;
+}
+
+.education-content p {
+    margin: 12px 0;
+
+    color: #c7c0b4;
+
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.education-content p:last-child {
+    margin-bottom: 0;
+}
+
+.education-content strong {
+    color: var(--ink-gold-light, #dfbd76);
+}
+
+.education-card.active .education-content {
+    max-height: 400px;
+
+    margin-top: 20px;
+
+    opacity: 1;
+}
+
+
+/* =====================================================
    ACHIEVEMENTS
-================================ */
+===================================================== */
 
-.achievement-list{
-    padding-left:20px;
+.achievement-list {
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
 }
 
-.achievement-list li{
-    margin-bottom:15px;
-    line-height:1.7;
-    font-family:'Libre Baskerville', serif;
+.achievement-list li {
+    position: relative;
+
+    padding: 0 0 18px 28px;
+    margin: 0 0 18px;
+
+    color: #c7c0b4;
+
+    border-bottom: 1px solid rgba(201, 162, 77, 0.12);
+
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 13px;
+    line-height: 1.9;
 }
 
-/* ===============================
-   CLOSING
-================================ */
+.achievement-list li::before {
+    content: "✦";
 
-.closing{
-    width:85%;
-    max-width:900px;
+    position: absolute;
+    left: 0;
+    top: 1px;
 
-    margin:60px auto;
+    color: var(--ink-gold, #c9a24d);
 
-    text-align:center;
-
-    font-family:'Playfair Display', serif;
-    font-size:24px;
-    font-style:italic;
-    line-height:1.8;
+    font-size: 13px;
 }
 
-/* ===============================
-   TABLET
-================================ */
+.achievement-list li:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
 
-@media (max-width:1024px){
+    border-bottom: 0;
+}
 
-    .profile-card{
-        gap:35px;
-        padding:35px;
+
+/* =====================================================
+   CLOSING QUOTE
+===================================================== */
+
+.closing {
+    position: relative;
+
+    width: 85%;
+    max-width: 900px;
+
+    margin: 90px auto;
+    padding: 35px 25px;
+
+    color: var(--ink-gold-light, #dfbd76);
+
+    border-top: 1px solid var(--ink-border, rgba(201, 162, 77, 0.23));
+    border-bottom: 1px solid var(--ink-border, rgba(201, 162, 77, 0.23));
+
+    text-align: center;
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic;
+    line-height: 1.9;
+}
+
+
+/* =====================================================
+   RESPONSIVE — TABLET
+===================================================== */
+
+@media (max-width: 1024px) {
+
+    .portfolio-container {
+        max-width: 900px;
     }
 
-    .author-image{
-        width:190px;
-        height:190px;
+    .profile-card {
+        gap: 30px;
+        padding: 35px;
     }
 
-    .profile-divider{
-        height:190px;
+    .about-image {
+        width: 220px;
+        height: 260px;
     }
 
-    .profile-right h2{
-        font-size:34px;
+    .profile-divider {
+        height: 160px;
+    }
+
+    .profile-right h2 {
+        font-size: 36px;
+    }
+
+    .portfolio-section {
+        margin: 60px auto;
+    }
+
+    .card-grid {
+        gap: 18px;
     }
 
 }
 
-/* ===============================
-   MOBILE
-================================ */
 
-@media (max-width:768px){
+/* =====================================================
+   RESPONSIVE — MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .page-title {
+        padding: 75px 15px 35px;
+    }
+
+    .page-title h1 {
+        font-size: 38px;
+    }
+
+    .page-title p {
+        font-size: 12px;
+    }
 
     .portfolio-container,
-    .portfolio-section{
-        width:92%;
+    .portfolio-section {
+        width: 92%;
     }
 
-    .profile-card{
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
+    .about {
+        margin-bottom: 55px;
+    }
 
-        text-align:center;
+    .profile-card {
+        grid-template-columns: 1fr;
 
-        gap:20px;
+        justify-items: center;
+        text-align: center;
 
-        padding:30px 20px;
+        gap: 22px;
+
+        padding: 30px 20px;
     }
 
     .profile-left,
-    .profile-right{
-        justify-content:center;
+    .profile-right {
+        justify-content: center;
     }
 
-    .author-image{
-        width:160px;
-        height:160px;
+    .about-image {
+        width: 180px;
+        height: 210px;
     }
 
-    .profile-divider{
-        width:120px;
-        height:2px;
+    .profile-divider {
+        width: 100px;
+        height: 1px;
 
-        background:linear-gradient(
-            to right,
+        background: linear-gradient(
+            90deg,
             transparent,
-            rgba(255,255,255,.75),
+            rgba(201, 162, 77, 0.7),
             transparent
         );
     }
 
-    .profile-right h2{
-        font-size:28px;
-        line-height:1.3;
+    .profile-right h2 {
+        font-size: 30px;
     }
 
-    .card-grid{
-        grid-template-columns:1fr;
+    .portfolio-section {
+        margin: 55px auto;
     }
 
     .portfolio-box,
-    .info-card{
-        padding:22px;
+    .info-card {
+        padding: 23px;
     }
 
-    .section-heading{
-        font-size:26px;
+    .portfolio-box h2,
+    .section-heading {
+        font-size: 26px;
     }
 
-    .closing{
-        font-size:20px;
+    .section-heading {
+        margin-bottom: 28px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .info-card h3 {
+        font-size: 20px;
+    }
+
+    .portfolio-box p,
+    .info-card p {
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .education-card {
+        padding: 22px;
+    }
+
+    .education-header h3 {
+        font-size: 18px;
+    }
+
+    .education-content p {
+        font-size: 11px;
+    }
+
+    .closing {
+        width: 90%;
+
+        margin: 65px auto;
+        padding: 25px 15px;
+
+        font-size: 20px;
     }
 
 }
-/* ==========================
-   EDUCATION CARD
-========================== */
 
-.education-card{
 
-    cursor:pointer;
+/* =====================================================
+   RESPONSIVE — SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .page-title h1 {
+        font-size: 32px;
+    }
+
+    .profile-card {
+        padding: 25px 16px;
+    }
+
+    .about-image {
+        width: 155px;
+        height: 185px;
+    }
+
+    .profile-right h2 {
+        font-size: 27px;
+    }
+
+    .portfolio-box,
+    .info-card {
+        padding: 20px;
+    }
+
+    .section-heading {
+        font-size: 24px;
+    }
+
+    .education-card {
+        padding: 18px;
+    }
+
+    .education-header {
+        gap: 12px;
+    }
+
+    .education-header h3 {
+        font-size: 16px;
+    }
+
+    .education-arrow {
+        width: 27px;
+        height: 27px;
+    }
+
+    .closing {
+        font-size: 18px;
+        line-height: 1.8;
+    }
 
 }
 
-.education-header{
 
-    display:flex;
+/* =====================================================
+   ACCESSIBILITY — REDUCED MOTION
+===================================================== */
 
-    justify-content:space-between;
+@media (prefers-reduced-motion: reduce) {
 
-    align-items:center;
-}
+    .profile-card,
+    .author-image,
+    .portfolio-box,
+    .info-card,
+    .education-arrow,
+    .education-content {
+        transition: none;
+    }
 
-.education-header h3{
+    .portfolio-box:hover,
+    .info-card:hover {
+        transform: none;
+    }
 
-    margin:0;
-}
-
-.education-arrow{
-
-    font-size:18px;
-
-    transition:.3s;
-}
-
-.education-content{
-
-    max-height:0;
-
-    overflow:hidden;
-
-    transition:max-height .4s ease;
-
-    margin-top:0;
-}
-
-.education-content p{
-
-    margin:12px 0;
-}
-
-.education-card.active .education-content{
-
-    max-height:300px;
-
-    margin-top:20px;
-}
-
-.education-card.active .education-arrow{
-
-    transform:rotate(180deg);
 }

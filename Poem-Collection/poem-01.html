@@ -1,427 +1,1168 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>सवालों से भरे मन को | Independent Ink</title>
+  <meta name="description" content="Read सवालों से भरे मन को, a Hindi poem by Devendra Upadhyay on questions, time, and the thoughts we carry within.">
 
-    <title>सवालों से भरे मन को | Ink</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/Ink/css/index.css">
 
-    <link rel="stylesheet" href="/Ink/css/index.css">
-    <link rel="stylesheet" href="/Ink/css/poem-reader.css"
+  <style>
+    /* =========================================
+       INDEPENDENT INK — POEM READER
+    ========================================= */
 
+    :root {
+      --ink-bg: #0b0b0b;
+      --ink-surface: #111111;
+      --ink-card: #141414;
+      --ink-card-hover: #191919;
+      --ink-gold: #c9a24d;
+      --ink-gold-light: #dfbd76;
+      --ink-text: #e9e5dd;
+      --ink-muted: #a29d93;
+      --ink-border: rgba(201, 162, 77, 0.23);
+
+      --ink-serif: "Playfair Display", Georgia, serif;
+      --ink-hindi: "Noto Serif Devanagari", serif;
+      --ink-sans: "Inter", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink-text);
+      background: var(--ink-bg);
+      font-family: var(--ink-sans);
+      font-size: 15px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--ink-gold-light);
+      outline-offset: 4px;
+    }
+
+    .ink-container {
+      width: min(900px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 82px;
+      padding: 15px max(24px, calc((100% - 1120px) / 2));
+      background: rgba(11, 11, 11, 0.95);
+      border-bottom: 1px solid var(--ink-border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .logo-circle {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--ink-gold);
+      border: 1px solid var(--ink-gold);
+      border-radius: 50%;
+      font-family: var(--ink-serif);
+      font-size: 24px;
+    }
+
+    .logo-text {
+      color: var(--ink-text);
+      font-family: var(--ink-serif);
+      font-size: 23px;
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 30px;
+    }
+
+    .nav-right a {
+      position: relative;
+      padding: 8px 0;
+      color: var(--ink-muted);
+      font-size: 13px;
+      transition: color 0.25s ease;
+    }
+
+    .nav-right a:hover,
+    .nav-right a.active {
+      color: var(--ink-gold-light);
+    }
+
+    .nav-right a.active::after {
+      position: absolute;
+      right: 0;
+      bottom: 1px;
+      left: 0;
+      height: 1px;
+      background: var(--ink-gold);
+      content: "";
+    }
+
+    .hamburger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 10px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid var(--ink-border);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--ink-gold);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .hamburger.is-open span:first-child {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.is-open span:last-child {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* =========================================
+       POEM HERO
+    ========================================= */
+
+    .reader-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 24px 55px;
+      text-align: center;
+    }
+
+    .reader-hero::before {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      width: 500px;
+      height: 500px;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        circle,
+        rgba(201, 162, 77, 0.09) 0%,
+        rgba(201, 162, 77, 0) 70%
+      );
+      pointer-events: none;
+      content: "";
+    }
+
+    .reader-category {
+      position: relative;
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--ink-gold);
+      border: 1px solid var(--ink-border);
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+    }
+
+    .reader-hero h1 {
+      position: relative;
+      max-width: 850px;
+      margin: 30px auto 0;
+      color: var(--ink-text);
+      font-family: var(--ink-hindi);
+      font-size: clamp(31px, 5vw, 53px);
+      font-weight: 600;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .reader-quote {
+      position: relative;
+      max-width: 540px;
+      margin: 24px auto 0;
+      color: var(--ink-muted);
+      font-family: var(--ink-hindi);
+      font-size: clamp(14px, 2vw, 17px);
+      font-weight: 400;
+      line-height: 2.1;
+      white-space: pre-line;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px auto 0;
+    }
+
+    .hero-divider span {
+      width: 48px;
+      height: 1px;
+      background: var(--ink-gold);
+      opacity: 0.65;
+    }
+
+    .hero-divider i {
+      color: var(--ink-gold);
+      font-size: 13px;
+      font-style: normal;
+    }
+
+    /* =========================================
+       POEM META
+    ========================================= */
+
+    .reader-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 35px;
+      padding: 20px 24px 34px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .meta-title {
+      color: var(--ink-gold);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      color: var(--ink-muted);
+      font-size: 12px;
+    }
+
+    .gold-divider {
+      width: min(900px, calc(100% - 48px));
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--ink-border),
+        var(--ink-gold),
+        var(--ink-border),
+        transparent
+      );
+    }
+
+    /* =========================================
+       POEM READING CARD
+    ========================================= */
+
+    .reader-container {
+      width: min(790px, calc(100% - 48px));
+      margin: 55px auto 0;
+    }
+
+    .poem-box {
+      position: relative;
+      padding: clamp(25px, 5vw, 54px);
+      background: var(--ink-card);
+      border: 1px solid var(--ink-border);
+      border-radius: 5px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+    }
+
+    .poem-box::before {
+      position: absolute;
+      top: 0;
+      left: 34px;
+      width: 70px;
+      height: 2px;
+      background: var(--ink-gold);
+      content: "";
+    }
+
+    .poem-section-heading {
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    .poem-section-label {
+      color: var(--ink-gold);
+      font-size: 10px;
+      letter-spacing: 4px;
+    }
+
+    .poem-section-heading h2 {
+      margin: 9px 0 0;
+      color: var(--ink-text);
+      font-family: var(--ink-serif);
+      font-size: 29px;
+      font-weight: 500;
+    }
+
+    .poem-heading-line {
+      width: 42px;
+      height: 1px;
+      margin: 17px auto 0;
+      background: var(--ink-gold);
+    }
+
+    .poem-content {
+      color: #e5dfd3;
+      font-family: var(--ink-hindi);
+      font-size: clamp(17px, 2.2vw, 21px);
+      font-weight: 400;
+      line-height: 2.35;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .poem-content p {
+      margin: 0;
+    }
+
+    .poem-content p + p {
+      margin-top: 36px;
+    }
+
+    .poem-stanza {
+      display: block;
+    }
+
+    /* =========================================
+       AUTHOR SIGNATURE
+    ========================================= */
+
+    .author-sign {
+      padding: 46px 24px 55px;
+      text-align: center;
+    }
+
+    .author-line {
+      width: 45px;
+      height: 1px;
+      margin: 0 auto 18px;
+      background: var(--ink-gold);
+    }
+
+    .author-sign h3 {
+      margin: 0;
+      color: var(--ink-gold-light);
+      font-family: var(--ink-serif);
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .author-sign p {
+      margin: 7px 0 0;
+      color: var(--ink-muted);
+      font-size: 11px;
+      letter-spacing: 1.3px;
+    }
+
+    /* =========================================
+       SHARE SECTION
+    ========================================= */
+
+    .share-section {
+      padding: 36px 24px 46px;
+      text-align: center;
+      background: var(--ink-surface);
+      border-top: 1px solid rgba(201, 162, 77, 0.12);
+      border-bottom: 1px solid rgba(201, 162, 77, 0.12);
+    }
+
+    .share-section h2 {
+      margin: 0 0 22px;
+      color: var(--ink-text);
+      font-family: var(--ink-serif);
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .share-section h2 span {
+      color: var(--ink-gold);
+    }
+
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      min-height: 43px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 19px;
+      color: var(--ink-muted);
+      background: transparent;
+      border: 1px solid var(--ink-border);
+      border-radius: 3px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .share-btn:hover {
+      color: var(--ink-gold-light);
+      border-color: var(--ink-gold);
+    }
+
+    .share-btn.primary {
+      color: var(--ink-bg);
+      background: var(--ink-gold);
+      border-color: var(--ink-gold);
+      font-weight: 600;
+    }
+
+    .share-btn.primary:hover {
+      background: var(--ink-gold-light);
+      border-color: var(--ink-gold-light);
+    }
+
+    .share-feedback {
+      min-height: 22px;
+      margin: 12px 0 0;
+      color: var(--ink-gold-light);
+      font-size: 12px;
+    }
+
+    /* =========================================
+       PREVIOUS / NEXT POEM
+    ========================================= */
+
+    .poem-navigation {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 50px 0;
+    }
+
+    .nav-card {
+      display: flex;
+      min-width: 0;
+      min-height: 120px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 22px 25px;
+      background: var(--ink-card);
+      border: 1px solid var(--ink-border);
+      border-radius: 4px;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav-card:hover {
+      background: var(--ink-card-hover);
+      border-color: var(--ink-gold);
+      transform: translateY(-3px);
+    }
+
+    .nav-card.next-poem {
+      text-align: right;
+    }
+
+    .nav-label {
+      color: var(--ink-gold);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-card h3 {
+      margin: 10px 0 0;
+      color: var(--ink-text);
+      font-family: var(--ink-hindi);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .nav-card .nav-subtitle {
+      margin-top: 4px;
+      color: var(--ink-muted);
+      font-size: 11px;
+    }
+
+    /* =========================================
+       WRITER'S NOTE
+    ========================================= */
+
+    .writer-note {
+      padding: 15px 0 75px;
+    }
+
+    .note-box {
+      position: relative;
+      padding: clamp(24px, 4vw, 38px);
+      background: linear-gradient(
+        135deg,
+        rgba(201, 162, 77, 0.055),
+        rgba(201, 162, 77, 0.012)
+      );
+      border: 1px solid var(--ink-border);
+      border-radius: 4px;
+    }
+
+    .note-box::before {
+      position: absolute;
+      top: 0;
+      left: 28px;
+      width: 45px;
+      height: 2px;
+      background: var(--ink-gold);
+      content: "";
+    }
+
+    .note-box h2 {
+      margin: 0 0 16px;
+      color: var(--ink-gold-light);
+      font-family: var(--ink-serif);
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .note-box p {
+      max-width: 680px;
+      margin: 0;
+      color: #bdb6aa;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 2.1;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    .footer {
+      padding: 27px 24px;
+      color: var(--ink-muted);
+      background: #080808;
+      border-top: 1px solid var(--ink-border);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.3px;
+    }
+
+    .footer span {
+      color: var(--ink-gold);
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 900px) {
+      .navbar {
+        gap: 20px;
+      }
+
+      .nav-right {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        min-height: 72px;
+        padding: 12px 22px;
+      }
+
+      .logo-circle {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+      }
+
+      .logo-text {
+        font-size: 21px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-right {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 22px 18px;
+        background: rgba(11, 11, 11, 0.98);
+        border-bottom: 1px solid var(--ink-border);
+      }
+
+      .nav-right.open {
+        display: flex;
+      }
+
+      .nav-right a {
+        padding: 13px 4px;
+        border-bottom: 1px solid rgba(201, 162, 77, 0.09);
+      }
+
+      .nav-right a:last-child {
+        border-bottom: 0;
+      }
+
+      .nav-right a.active::after {
+        right: auto;
+        bottom: 8px;
+        width: 24px;
+      }
+
+      .reader-hero {
+        padding: 72px 20px 40px;
+      }
+
+      .reader-hero h1 {
+        margin-top: 24px;
+      }
+
+      .reader-quote {
+        margin-top: 18px;
+      }
+
+      .reader-meta {
+        padding-bottom: 28px;
+      }
+
+      .reader-container {
+        margin-top: 35px;
+      }
+
+      .poem-box::before {
+        left: 22px;
+      }
+
+      .poem-section-heading {
+        margin-bottom: 28px;
+      }
+
+      .poem-navigation {
+        gap: 12px;
+        padding: 35px 0;
+      }
+
+      .nav-card {
+        min-height: 110px;
+        padding: 17px;
+      }
+
+      .nav-card h3 {
+        font-size: 14px;
+      }
+
+      .writer-note {
+        padding-bottom: 55px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .ink-container,
+      .reader-container,
+      .gold-divider {
+        width: calc(100% - 32px);
+      }
+
+      .navbar {
+        padding-inline: 16px;
+      }
+
+      .reader-hero {
+        padding-inline: 16px;
+      }
+
+      .reader-hero h1 {
+        font-size: 30px;
+      }
+
+      .reader-meta {
+        gap: 20px;
+      }
+
+      .poem-box {
+        padding: 25px 17px;
+      }
+
+      .poem-content {
+        font-size: 17px;
+        line-height: 2.25;
+      }
+
+      .poem-navigation {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-card.next-poem {
+        text-align: left;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .share-btn {
+        width: 100%;
+      }
+
+      .note-box {
+        padding: 25px 20px;
+      }
+
+      .note-box h2 {
+        font-size: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- ================= NAVBAR ================= -->
 
-<!-- ================= NAVBAR ================= -->
-
-<header class="navbar">
+  <header class="navbar">
 
     <div class="nav-left">
+      <div class="logo-circle">I</div>
 
-        <div class="logo-circle">I</div>
-
-        <a href="/Ink/index.html">
-            <span class="logo-text">Ink</span>
-        </a>
-
+      <a href="/Ink/index.html" aria-label="Independent Ink home">
+        <span class="logo-text">Independent Ink.</span>
+      </a>
     </div>
 
-    <div class="hamburger" id="hamburger">
+    <button
+      class="hamburger"
+      id="hamburger"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="navMenu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-        <span></span>
-        <span></span>
-        <span></span>
+    <nav class="nav-right" id="navMenu" aria-label="Main navigation">
 
-    </div>
+      <a href="/Ink/index.html">Home</a>
 
-    <nav class="nav-right" id="navMenu">
+      <a href="/Ink/MainPages/poem.html" class="active" aria-current="page">
+        Poems
+      </a>
 
-        <a href="/Ink/index.html">Home</a>
+      <a href="/Ink/MainPages/article.html">Articles</a>
 
-        <a href="/Ink/MainPages/poem.html" class="active">Poems</a>
+      <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
 
-        <a href="/Ink/MainPages/article.html">Article</a>
-
-        <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
-
-        <a href="/Ink/MainPages/contact.html">Contact</a>
+      <a href="/Ink/MainPages/contact.html">Contact</a>
 
     </nav>
 
-</header>
+  </header>
 
 
+  <!-- ================= HERO ================= -->
 
-<!-- ================= HERO ================= -->
+  <section class="reader-hero">
 
-<section class="reader-hero">
+    <span class="reader-category">POEM NO. 01</span>
 
-    <span class="reader-category">
+    <h1>सवालों से भरे मन को...</h1>
 
-        POEM
+    <p class="reader-quote">"कुछ प्रश्न उत्तर नहीं चाहते,
+केवल एक शांत हृदय चाहते हैं।"</p>
 
-    </span>
-
-    <h1>
-
-        सवालों से भरे मन को..
-
-    </h1>
-
-    <p class="reader-quote">
-
-        "कुछ प्रश्न उत्तर नहीं चाहते,
-        केवल एक शांत हृदय चाहते हैं।"
-
-    </p>
-
-</section>
-
-
-
-<!-- ================= META ================= -->
-
-<section class="reader-meta">
-
-    <div>
-
-        <span class="meta-title">
-            प्रकाशित
-        </span>
-
-        <span class="meta-value">
-            12 जनवरी 2026
-        </span>
-
+    <div class="hero-divider" aria-hidden="true">
+      <span></span>
+      <i>✦</i>
+      <span></span>
     </div>
 
-   
-</section>
+  </section>
 
 
+  <!-- ================= META ================= -->
 
-<div class="gold-divider"></div>
+  <section class="reader-meta">
 
-
-
-<!-- ================= POEM ================= -->
-
-<section class="reader-container">
-
-<article class="poem-reading">
-
-<p>
-
-सवालों से भरे मन को,<br>
-भला रोकोगे तुम कैसे,<br><br>
-
-जो भीतर चीखता रहता,<br>
-उसे समझाओगे तुम कैसे,<br><br>
-
-जो बीत गया समय कभी,<br>
-क्या वापस लौट पाएगा,<br><br>
-
-अगर लौट भी आया तो,<br>
-क्या पहले सा हो पाएगा।
-
-</p>
-
-<p>
-
-हर उत्तर के पीछे भी,<br>
-एक नया सवाल रहता है,<br><br>
-
-जीवन की हर राह में,<br>
-कुछ अनकहा ख्याल रहता है।
-
-</p>
-
-</article>
-
-</section>
-
-
-
-<!-- ================= AUTHOR SIGN ================= -->
-
-<section class="author-sign">
-
-<div class="author-line"></div>
-
-<h3>
-
-— Devendra Upadhyay —
-
-</h3>
-
-<p>
-
-Ink • Poetry Collection
-
-</p>
-
-</section>
-
-
-
-<!-- ================= SHARE ================= -->
-
-<section class="share-section">
-
-<h2>
-
-Share this poem
-
-</h2>
-
-<div class="share-buttons">
-
-<button id="copyLink">
-
-Copy Link
-
-</button>
-
-<button id="shareWhatsapp">
-
-WhatsApp
-
-</button>
-
-<button id="shareTwitter">
-
-X (Twitter)
-
-</button>
-
-</div>
-
-</section>
-<!-- ================= PREVIOUS / NEXT ================= -->
-
-<section class="poem-navigation">
-
-    <a href="poem-00.html" class="nav-card prev-poem">
-
-        <span class="nav-label">
-            ← Previous Poem
-        </span>
-
-        <h3>
-            पिछली कविता
-        </h3>
-
-    </a>
-
-
-    <a href="poem-02.html" class="nav-card next-poem">
-
-        <span class="nav-label">
-            Next Poem →
-        </span>
-
-        <h3>
-            मैं लौट जाना चाहता हूं
-        </h3>
-
-    </a>
-
-</section>
-
-
-
-
-
-<!-- ================= DIVIDER ================= -->
-
-<div class="gold-divider"></div>
-
-
-
-
-
-<!-- ================= MORE POEMS ================= -->
-
-<section class="related-poems">
-
-    <h2>
-
-        Continue Reading
-
-    </h2>
-
-    <p>
-
-        Every poem is another page of the same journey.
-
-    </p>
-
-
-
-
-
-    <div class="related-grid">
-
-
-
-        <article class="related-card">
-
-            <span class="related-number">
-
-                02
-
-            </span>
-
-            <h3>
-
-                मैं लौट जाना चाहता हूं
-
-            </h3>
-
-            <p>
-
-                मैं लौट जाना चाहता हूं,<br>
-                उम्र के उस पड़ाव में...
-
-            </p>
-
-            <a href="poem-02.html">
-
-                Read →
-
-            </a>
-
-        </article>
-
-
-
-
-
-        <article class="related-card">
-
-            <span class="related-number">
-
-                03
-
-            </span>
-
-            <h3>
-
-                आने वाली कविता
-
-            </h3>
-
-            <p>
-
-                जल्द प्रकाशित होगी...
-
-            </p>
-
-            <a href="#">
-
-                Coming Soon
-
-            </a>
-
-        </article>
-
-
-
-
-
-        <article class="related-card">
-
-            <span class="related-number">
-
-                04
-
-            </span>
-
-            <h3>
-
-                नई रचना
-
-            </h3>
-
-            <p>
-
-                एक और एहसास,
-                शब्दों में...
-
-            </p>
-
-            <a href="#">
-
-                Coming Soon
-
-            </a>
-
-        </article>
-
-
-
+    <div class="meta-item">
+      <span class="meta-title">Published</span>
+      <span class="meta-value">12 जनवरी 2026</span>
     </div>
 
-</section>
+    <div class="meta-item">
+      <span class="meta-title">Written by</span>
+      <span class="meta-value">Devendra Upadhyay</span>
+    </div>
+
+  </section>
 
 
+  <div class="gold-divider"></div>
 
 
+  <!-- ================= POEM ================= -->
 
-<!-- ================= WRITER NOTE ================= -->
+  <main class="reader-container">
 
-<section class="writer-note">
+    <article class="poem-box">
 
-    <div class="note-box">
+      <header class="poem-section-heading">
+        <span class="poem-section-label">POETRY</span>
+        <h2>The Poem</h2>
+        <div class="poem-heading-line"></div>
+      </header>
 
-        <h2>
-
-            A Note From The Writer
-
-        </h2>
+      <div class="poem-content">
 
         <p>
+          सवालों से भरे मन को,<br>
+          भला रोकोगे तुम कैसे,<br><br>
 
-            Poetry is not merely written;
-            it is lived.
-            Every verse on Ink is a fragment of a thought,
-            an emotion, or a moment that once existed
-            in silence before becoming words.
+          जो भीतर चीखता रहता,<br>
+          उसे समझाओगे तुम कैसे,<br><br>
 
+          जो बीत गया समय कभी,<br>
+          क्या वापस लौट पाएगा,<br><br>
+
+          अगर लौट भी आया तो,<br>
+          क्या पहले सा हो पाएगा।
         </p>
+
+        <p>
+          हर उत्तर के पीछे भी,<br>
+          एक नया सवाल रहता है,<br><br>
+
+          जीवन की हर राह में,<br>
+          कुछ अनकहा ख्याल रहता है।
+        </p>
+
+      </div>
+
+    </article>
+
+  </main>
+
+
+  <!-- ================= AUTHOR SIGNATURE ================= -->
+
+  <section class="author-sign">
+
+    <div class="author-line"></div>
+
+    <h3>— Devendra Upadhyay —</h3>
+
+    <p>INDEPENDENT INK · POETRY COLLECTION</p>
+
+  </section>
+
+
+  <!-- ================= SHARE ================= -->
+
+  <section class="share-section">
+
+    <div class="ink-container">
+
+      <h2>Share this <span>poem.</span></h2>
+
+      <div class="share-buttons">
+
+        <button class="share-btn primary" id="copyLink" type="button">
+          <span aria-hidden="true">↗</span>
+          Copy Link
+        </button>
+
+        <button class="share-btn" id="shareWhatsapp" type="button">
+          WhatsApp
+        </button>
+
+        <button class="share-btn" id="shareTwitter" type="button">
+          X (Twitter)
+        </button>
+
+      </div>
+
+      <p class="share-feedback" id="shareFeedback" aria-live="polite"></p>
 
     </div>
 
-</section>
+  </section>
 
 
+  <!-- ================= PREVIOUS / NEXT ================= -->
+
+  <section class="ink-container">
+
+    <nav class="poem-navigation" aria-label="Navigate between poems">
+
+      <a href="poem-00.html" class="nav-card prev-poem">
+
+        <span class="nav-label">← Previous Poem</span>
+
+        <h3>पिछली कविता</h3>
+
+        <span class="nav-subtitle">Explore the previous poem</span>
+
+      </a>
+
+      <a href="poem-02.html" class="nav-card next-poem">
+
+        <span class="nav-label">Next Poem →</span>
+
+        <h3>मैं लौट जाना चाहता हूं</h3>
+
+        <span class="nav-subtitle">Continue reading</span>
+
+      </a>
+
+    </nav>
+
+  </section>
 
 
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-    Devendra Upadhyay | © 2026 Ink | All Rights Reserved
-
-</footer>
+  <div class="gold-divider"></div>
 
 
+  <!-- ================= WRITER'S NOTE ================= -->
+
+  <section class="writer-note">
+
+    <div class="ink-container">
+
+      <article class="note-box">
+
+        <h2>A Note From The Writer</h2>
+
+        <p>
+          Poetry is not merely written; it is lived.
+          Every verse on Independent Ink is a fragment of a thought,
+          an emotion, or a moment that once existed in silence
+          before becoming words.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
 
 
+  <!-- ================= FOOTER ================= -->
 
-<!-- ================= SCRIPT ================= -->
+  <footer class="footer">
+    <span>Devendra Upadhyay</span> |
+    © 2026 Independent Ink | All Rights Reserved
+  </footer>
 
-<script src="/Ink/js/index.js"></script>
 
-<script src="/Ink/js/poem-reader.js"></script>
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      /* Mobile navigation */
+
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("navMenu");
+
+      function closeMenu() {
+        navMenu.classList.remove("open");
+        hamburger.classList.remove("is-open");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Open navigation menu");
+      }
+
+      hamburger.addEventListener("click", function () {
+        const isOpen = navMenu.classList.toggle("open");
+
+        hamburger.classList.toggle("is-open", isOpen);
+        hamburger.setAttribute("aria-expanded", String(isOpen));
+        hamburger.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+      });
+
+      navMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("click", function (event) {
+        if (
+          !navMenu.contains(event.target) &&
+          !hamburger.contains(event.target)
+        ) {
+          closeMenu();
+        }
+      });
+
+
+      /* Share links */
+
+      const copyButton = document.getElementById("copyLink");
+      const whatsappButton = document.getElementById("shareWhatsapp");
+      const twitterButton = document.getElementById("shareTwitter");
+      const feedback = document.getElementById("shareFeedback");
+
+      function getPageURL() {
+        return window.location.href;
+      }
+
+      function getShareText() {
+        return "सवालों से भरे मन को... — A poem by Devendra Upadhyay";
+      }
+
+      async function copyPageLink() {
+        const url = getPageURL();
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(url);
+          } else {
+            const temporaryInput = document.createElement("textarea");
+
+            temporaryInput.value = url;
+            temporaryInput.style.position = "fixed";
+            temporaryInput.style.opacity = "0";
+
+            document.body.appendChild(temporaryInput);
+            temporaryInput.focus();
+            temporaryInput.select();
+
+            const copied = document.execCommand("copy");
+            temporaryInput.remove();
+
+            if (!copied) {
+              throw new Error("Copy command was unsuccessful.");
+            }
+          }
+
+          copyButton.innerHTML = "Copied ✓";
+          feedback.textContent = "Poem link copied successfully.";
+
+          setTimeout(function () {
+            copyButton.innerHTML = '<span aria-hidden="true">↗</span> Copy Link';
+          }, 2000);
+
+        } catch (error) {
+          feedback.textContent =
+            "Copy failed. Please copy the page URL from your browser.";
+        }
+      }
+
+      copyButton.addEventListener("click", copyPageLink);
+
+      whatsappButton.addEventListener("click", function () {
+        const message = getShareText() + "\n" + getPageURL();
+
+        const url = "https://wa.me/?text=" + encodeURIComponent(message);
+
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+      twitterButton.addEventListener("click", function () {
+        const text = getShareText();
+        const url = getPageURL();
+
+        const shareURL =
+          "https://twitter.com/intent/tweet?text=" +
+          encodeURIComponent(text) +
+          "&url=" +
+          encodeURIComponent(url);
+
+        window.open(shareURL, "_blank", "noopener,noreferrer");
+      });
+
+    });
+  </script>
 
 </body>
-
 </html>

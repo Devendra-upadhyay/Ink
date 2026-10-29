@@ -1,380 +1,378 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read articles by Independent Ink on education, politics, technology and society.">
 
-<title>Articles | Ink</title>
+    <title>Articles | Independent Ink</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
 
-
-<link rel="stylesheet" href="/Ink/css/index.css">
-
+    <link rel="stylesheet" href="/Ink/css/index.css">
 </head>
-
 
 <body>
 
+    <!-- NAVBAR -->
+    <header class="navbar">
 
-<!-- NAVBAR -->
+        <div class="nav-left">
+            <a href="/Ink/index.html" class="brand-link" aria-label="Independent Ink home">
+                <span class="logo-circle" aria-hidden="true">I</span>
+                <span class="logo-text">Ink</span>
+            </a>
+        </div>
+
+        <button
+            class="hamburger"
+            id="hamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="navMenu"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-right" id="navMenu" aria-label="Main navigation">
+            <a href="/Ink/index.html">Home</a>
+            <a href="/Ink/MainPages/poem.html">Poems</a>
+            <a href="/Ink/MainPages/article.html" class="active" aria-current="page">Articles</a>
+            <a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
+            <a href="/Ink/MainPages/contact.html">Contact</a>
+        </nav>
 
-<header class="navbar">
+    </header>
 
-<div class="nav-left">
+    <!-- PAGE HEADER -->
+    <section class="page-title" aria-labelledby="pageHeading">
 
-<div class="logo-circle">I</div>
+        <h1 id="pageHeading">Articles</h1>
+
+        <p>
+            Ideas, thoughts and perspectives on education, politics,
+            technology and society.
+        </p>
+
+        <div class="divider" aria-hidden="true"></div>
+
+    </section>
+
+    <!-- SEARCH -->
+    <section class="article-search-section" aria-label="Search articles">
+
+        <label for="articleSearch" class="visually-hidden">
+            Search articles by title or content
+        </label>
+
+        <input
+            type="search"
+            id="articleSearch"
+            placeholder="Search articles..."
+            autocomplete="off">
 
-<a href="/Ink/index.html">
-<span class="logo-text">Ink</span>
-</a>
+        <button
+            type="button"
+            id="clearArticleSearch"
+            aria-label="Clear article search"
+            hidden>
+            Clear
+        </button>
+
+    </section>
+
+    <!-- CATEGORY FILTERS -->
+    <section class="filters" aria-label="Filter articles by category">
+
+        <button type="button" class="active" data-category="all" aria-pressed="true">
+            All
+        </button>
+
+        <button type="button" data-category="education" aria-pressed="false">
+            Education
+        </button>
+
+        <button type="button" data-category="politics" aria-pressed="false">
+            Politics
+        </button>
+
+        <button type="button" data-category="technology" aria-pressed="false">
+            Technology
+        </button>
+
+        <button type="button" data-category="society" aria-pressed="false">
+            Society
+        </button>
+
+    </section>
+
+    <!-- ARTICLES -->
+    <main class="article-list" id="articles-container" aria-label="Article collection">
+
+        <article class="article-card education" data-category="education" data-title="MP Education Reform: A Need For Change">
+
+            <div class="article-category">Education</div>
+
+            <div class="article-header">
+                <span class="article-no" aria-hidden="true">01</span>
+                <h2>MP Education Reform: A Need For Change</h2>
+            </div>
+
+            <div class="article-meta">
+                <time datetime="2026-07-26">Published: 26 July 2026</time>
+                <span>✍ Devendra Upadhyay</span>
+            </div>
+
+            <p>
+                Education is not only about marks and examinations.
+                It is about creating skills, curiosity and responsible citizens.
+                A strong education system builds the future of society.
+            </p>
+
+            <div class="read-btn">
+                <a href="/Ink/MainPages/Article-Collection/article-01.html">
+                    Read Full Article <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </article>
+
+        <article class="article-card politics" data-category="politics" data-title="Government Accountability In Democracy">
+
+            <div class="article-category">Politics</div>
+
+            <div class="article-header">
+                <span class="article-no" aria-hidden="true">02</span>
+                <h2>Government Accountability In Democracy</h2>
+            </div>
+
+            <div class="article-meta">
+                <time datetime="2026-07-26">Published: 26 July 2026</time>
+                <span>✍ Devendra Upadhyay</span>
+            </div>
+
+            <p>
+                Democracy is not only about elections.
+                It is also about questions, transparency and accountability
+                between citizens and the government.
+            </p>
+
+            <div class="read-btn">
+                <a href="/Ink/MainPages/Article-Collection/article-02.html">
+                    Read Full Article <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </article>
+
+        <article class="article-card technology" data-category="technology" data-title="Technology And The Future Of India">
+
+            <div class="article-category">Technology</div>
+
+            <div class="article-header">
+                <span class="article-no" aria-hidden="true">03</span>
+                <h2>Technology And The Future Of India</h2>
+            </div>
+
+            <div class="article-meta">
+                <time datetime="2026-07-26">Published: 26 July 2026</time>
+                <span>✍ Devendra Upadhyay</span>
+            </div>
 
-</div>
-
-
-
-<div class="hamburger" id="hamburger">
-
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-
-
-<nav class="nav-right" id="navMenu">
-
-<a href="/Ink/index.html">Home</a>
-
-<a href="/Ink/MainPages/poem.html">Poems</a>
-
-<a href="/Ink/MainPages/article.html" class="active">Articles</a>
-
-<a href="/Ink/MainPages/Portfolio.html">Portfolio</a>
-
-<a href="/Ink/MainPages/contact.html">Contact</a>
-
-</nav>
-
-
-</header>
-
-
-
-
-
-<!-- ARTICLE HEADER -->
-
-<section class="page-title">
-
-<h1>Articles</h1>
-
-<p>
-Ideas, thoughts and perspectives on education, politics, technology and society.
-</p>
-
-<div class="divider"></div>
-
-</section>
-
-
-
-
-
-
-<!-- SEARCH -->
-
-<section class="article-search-section">
-
-<input 
-type="text"
-id="articleSearch"
-placeholder="Search articles..."
-onkeyup="searchArticlesByName()">
-
-</section>
-
-
-
-
-
-
-<!-- CATEGORY FILTER -->
-
-<section class="filters">
-
-<button class="active" onclick="filterArticles('all')">
-All
-</button>
-
-<button onclick="filterArticles('education',this)">
-Education
-</button>
-
-<button onclick="filterArticles('politics')">
-Politics
-</button>
-
-<button onclick="filterArticles('technology')">
-Technology
-</button>
-
-<button onclick="filterArticles('society')">
-Society
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ARTICLES -->
-
-<main class="article-list" id="articles-container">
-
-
-
-<article class="article-card education" data-title="MP Education Reform">
-
-
-<div class="article-category">
-Education
-</div>
-
-
-<div class="article-header">
-
-<span class="article-no">
-01
-</span>
-
-
-<h2>
-MP Education Reform: A Need For Change
-</h2>
-
-
-</div>
-
-
-
-<div class="article-meta">
-
-<span>
-Published : 26 July 2026
-</span>
-
-<span>
-✍ Devendra Upadhyay
-</span>
-
-</div>
-
-
-
-
-<p>
-
-Education is not only about marks and examinations.
-It is about creating skills, curiosity and responsible citizens.
-A strong education system builds the future of society.
-
-</p>
-
-
-
-
-<div class="read-btn">
-
-<a href="Article-Collection/article-01.html">
-Read Full Article →
-</a>
-
-</div>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-<article class="article-card politics" data-title="Government Accountability">
-
-
-<div class="article-category">
-Politics
-</div>
-
-
-<div class="article-header">
-
-<span class="article-no">
-02
-</span>
-
-
-<h2>
-Government Accountability In Democracy
-</h2>
-
-
-</div>
-
-
-
-
-<div class="article-meta">
-
-<span>
-Published : 26 July 2026
-</span>
-
-<span>
-✍ Devendra Upadhyay
-</span>
-
-</div>
-
-
-
-
-<p>
-
-Democracy is not only about elections.
-It is also about questions, transparency and accountability
-between citizens and the government.
-
-</p>
-
-
-
-
-<div class="read-btn">
-
-<a href="Article-Collection/article-02.html">
-Read Full Article →
-</a>
-
-</div>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-<article class="article-card technology" data-title="Technology And Future">
-
-
-<div class="article-category">
-Technology
-</div>
-
-
-
-<div class="article-header">
-
-<span class="article-no">
-03
-</span>
-
-
-<h2>
-Technology And The Future Of India
-</h2>
-
-
-</div>
-
-
-
-
-<div class="article-meta">
-
-<span>
-Published : 26 July 2026
-</span>
-
-
-<span>
-✍ Devendra Upadhyay
-</span>
-
-</div>
-
-
-
-
-<p>
-
-Technology is changing the way people learn,
-work and communicate.
-The future belongs to those who understand technology
-and use it responsibly.
-
-</p>
-
-
-
-
-<div class="read-btn">
-
-<a href="Article-Collection/article-03.html">
-Read Full Article →
-</a>
-
-</div>
-
-
-
-</article>
-
-
-
-
-
-</main>
-
-
-
-
-
-
-
-
-<footer class="footer">
-
-Devendra Upadhyay | © 2026 Ink | All Rights Reserved
-
-</footer>
-
-
-
-
-
-<script src="/Ink/js/index.js"></script>
-
-
-
+            <p>
+                Technology is changing the way people learn,
+                work and communicate.
+                The future belongs to those who understand technology
+                and use it responsibly.
+            </p>
+
+            <div class="read-btn">
+                <a href="/Ink/MainPages/Article-Collection/article-03.html">
+                    Read Full Article <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </article>
+
+        <!-- Empty search state -->
+        <p id="articleEmptyState" role="status" hidden>
+            No articles found. Try another search or category.
+        </p>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        Devendra Upadhyay | © <span id="currentYear">2026</span> Independent Ink | All Rights Reserved
+    </footer>
+
+    <!-- SHARED SITE JAVASCRIPT -->
+    <script src="/Ink/js/index.js"></script>
+
+    <!-- ARTICLE SEARCH AND FILTERS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const searchInput = document.getElementById("articleSearch");
+            const clearButton = document.getElementById("clearArticleSearch");
+            const filterButtons = document.querySelectorAll(".filters button[data-category]");
+            const articleCards = document.querySelectorAll("#articles-container .article-card");
+            const emptyState = document.getElementById("articleEmptyState");
+            const currentYear = document.getElementById("currentYear");
+
+            let activeCategory = "all";
+
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+
+            function filterArticles() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                articleCards.forEach(function (article) {
+                    const title = article.dataset.title || "";
+                    const content = article.textContent || "";
+                    const category = article.dataset.category || "";
+
+                    const matchesSearch =
+                        title.toLowerCase().includes(searchTerm) ||
+                        content.toLowerCase().includes(searchTerm);
+
+                    const matchesCategory =
+                        activeCategory === "all" ||
+                        category === activeCategory;
+
+                    const shouldShow = matchesSearch && matchesCategory;
+
+                    article.hidden = !shouldShow;
+
+                    if (shouldShow) {
+                        visibleCount++;
+                    }
+                });
+
+                if (emptyState) {
+                    emptyState.hidden = visibleCount !== 0;
+                }
+
+                if (clearButton) {
+                    clearButton.hidden = searchInput.value.length === 0;
+                }
+            }
+
+            searchInput.addEventListener("input", filterArticles);
+
+            filterButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    activeCategory = button.dataset.category;
+
+                    filterButtons.forEach(function (item) {
+                        const isActive = item === button;
+
+                        item.classList.toggle("active", isActive);
+                        item.setAttribute("aria-pressed", String(isActive));
+                    });
+
+                    filterArticles();
+                });
+            });
+
+            clearButton.addEventListener("click", function () {
+                searchInput.value = "";
+                searchInput.focus();
+                filterArticles();
+            });
+
+            filterArticles();
+        });
+    </script>
+
+    <!-- Small accessibility helper -->
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        #articleSearch {
+            min-width: 0;
+        }
+
+        #clearArticleSearch {
+            margin-left: 10px;
+            padding: 10px 16px;
+            border: 1px solid #c9a24d;
+            border-radius: 24px;
+            background: transparent;
+            color: #c9a24d;
+            cursor: pointer;
+        }
+
+        #clearArticleSearch:hover {
+            background: #c9a24d;
+            color: #000;
+        }
+
+        #articleEmptyState {
+            padding: 30px 15px;
+            text-align: center;
+            color: #c9a24d;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            border: 0;
+            background: transparent;
+        }
+
+        .hamburger span {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .article-search-section {
+                padding: 0 16px;
+                gap: 8px;
+            }
+
+            .article-search-section input {
+                width: 100%;
+            }
+
+            #clearArticleSearch {
+                margin-left: 0;
+            }
+        }
+    </style>
 
 </body>
-
 </html>
